@@ -1,0 +1,212 @@
+title 
+
+abstract
+
+introduction
+
+conclusion
+
+Lexically-Accelerated Dense Retrieval
+    Research Questions
+        RQ1 How does LADR compare to other approximation techniques
+        in terms of effectiveness and efficiency?
+        RQ2 Is LADR applicable to a variety of single-representation
+        dense retrieval models?
+        RQ3 What are the computational overheads of LADR?
+        RQ4 How do the parameters introduced by LADR (e.g., number of
+        neighbors 𝑘) affect the effectiveness and efficiency of LADR?
+        RQ5 Is an exact nearest neighbor graph needed for LADR to be
+        effective?
+        RQ6 What are the trade-offs between proactive and adaptive
+        LADR in terms of precision, recall and latency?
+
+    Revised
+        Effectiveness and Efficiency of LADR: How does LADR compare to other approximation techniques in terms of
+        effectiveness and efficiency, and what computational overheads does it entail? Applicability and Parameter
+
+        Impact: Is LADR applicable across different single-representation dense retrieval models, and how do its
+        parameters, like the number of neighbors 𝑘 k, influence its performance? 
+        Requirements and Trade-offs: Is an exact nearest neighbor graph necessary for LADR's effectiveness, and 
+        what are the trade-offs between proactive and adaptive LADR approaches regarding precision, recall, and 
+        latency?
+
+    Main contributions
+        Create a new dense retrieval technique designed to have a good trade off between speed/efficiency and
+        effectiveness. Leveraging well known lexical techiniques to seed the dense exploration, allowing for an educated
+        starting place. This enables this technique to find documents which do not have the original terms, but without 
+        doing a search as expensive
+
+
+
+        Innovative Technique: The paper could introduce LADR as a novel retrieval technique that offers a more efficient or
+        effective approach to document retrieval compared to existing methods. 
+
+        Comprehensive Evaluation: It might provide a thorough evaluation of LADR's effectiveness and efficiency,
+        demonstrating its superiority or comparability to other well-known approximation techniques in various scenarios. 
+
+        Broad Applicability: The contribution could include evidence of LADR's applicability across a range of
+        single-representation dense retrieval models, showing its versatility and adaptability in different contexts. 
+
+        Parameter Analysis: An important part of the contribution could be a detailed analysis of how different parameters
+        (like the number of neighbors 𝑘 k) affect LADR’s performance, offering insights into optimal configuration settings
+        for different use cases.
+
+        Practical Implications: The paper might explore the practical requirements and trade-offs involved in implementing
+        LADR, such as the necessity (or not) of an exact nearest neighbor graph, and the balance between proactive and
+        adaptive strategies in terms of precision, recall, and latency.
+
+Effective Adhoc Retrieval Through Traversal of a Query-Document Graph
+    Research Questions
+        Innovative Re-ranking Approach: Introducing Gar, a novel adaptive re-ranking method that uses a corpus graph to enhance
+        retrieval effectiveness. This method represents a significant shift from traditional re-ranking techniques by
+        integrating graph-based structures within the retrieval process.
+
+        Empirical Validation: Providing empirical evidence of Gar's effectiveness through rigorous testing on standardized
+        datasets such as the TREC Deep Learning 2019 and 2020 test collections. These results highlight the improvement Gar
+        offers over traditional re-ranking methods and state-of-the-art neural information retrieval (IR) systems.
+
+        Parameter Sensitivity Analysis: A detailed exploration of how Gar's performance is affected by various parameters, such
+        as the number of neighbors in the corpus graph and batch size. This contribution is crucial for understanding the
+        adaptability and optimization of Gar in different retrieval environments.
+
+        Computational Efficiency: Assessing the computational overheads introduced by Gar, which is vital for practical
+        applications, particularly in scenarios where computational resources are a limiting factor.
+
+        Comprehensive Evaluation Metrics: Utilizing a variety of metrics, including nDCG, MAP, and Recall, to evaluate Gar’s
+        performance comprehensively. This thorough evaluation helps in understanding the strengths and limitations of Gar across
+        different aspects of retrieval performance.
+
+        Overall, the main contribution of this paper is the development and validation of a novel adaptive re-ranking method
+        that leverages a corpus graph for enhanced document retrieval, providing insights into its efficiency, effectiveness,
+        and parameter dependencies, which could influence future research and applications in the field of information
+        retrieval.
+
+    Main contribution
+        Innovative Re-ranking Approach: Introducing Gar, a novel adaptive re-ranking method that uses a corpus graph to enhance
+        retrieval effectiveness. This method represents a significant shift from traditional re-ranking techniques by
+        integrating graph-based structures within the retrieval process.
+
+        Empirical Validation: Providing empirical evidence of Gar's effectiveness through rigorous testing on standardized
+        datasets such as the TREC Deep Learning 2019 and 2020 test collections. These results highlight the improvement Gar
+        offers over traditional re-ranking methods and state-of-the-art neural information retrieval (IR) systems.
+
+        Parameter Sensitivity Analysis: A detailed exploration of how Gar's performance is affected by various parameters, such
+        as the number of neighbors in the corpus graph and batch size. This contribution is crucial for understanding the
+        adaptability and optimization of Gar in different retrieval environments.
+
+        Computational Efficiency: Assessing the computational overheads introduced by Gar, which is vital for practical
+        applications, particularly in scenarios where computational resources are a limiting factor.
+
+        Comprehensive Evaluation Metrics: Utilizing a variety of metrics, including nDCG, MAP, and Recall, to evaluate Gar’s
+        performance comprehensively. This thorough evaluation helps in understanding the strengths and limitations of Gar across
+        different aspects of retrieval performance.
+
+        Overall, the main contribution of this paper is the development and validation of a novel adaptive re-ranking method
+        that leverages a corpus graph for enhanced document retrieval, providing insights into its efficiency, effectiveness,
+        and parameter dependencies, which could influence future research and applications in the field of information
+        retrieval.
+
+Adaptive Re-Ranking with a Corpus Graph
+    Research Questions
+        Impact of Gar on Retrieval Effectiveness: What is the impact of Gar on retrieval effectiveness compared to typical
+        re-ranking and state-of-the-art neural IR systems? 
+
+        Computational Overheads and Parameter Sensitivity: What are the
+        computational overheads introduced by Gar, and how sensitive is Gar to the parameters it introduces, such as the number
+        of neighbors 𝑘 k and the batch size 𝑏 b?
+
+    Main contribution
+        Innovative Re-ranking Approach: Introducing Gar, a novel adaptive re-ranking method that uses a corpus graph to
+        enhance retrieval effectiveness. This method represents a significant shift from traditional re-ranking
+        techniques by integrating graph-based structures within the retrieval process.
+
+        Empirical Validation: Providing empirical evidence of Gar's effectiveness through rigorous testing on
+        standardized datasets such as the TREC Deep Learning 2019 and 2020 test collections. These results highlight the
+        improvement Gar offers over traditional re-ranking methods and state-of-the-art neural information retrieval
+        (IR) systems.
+
+        Parameter Sensitivity Analysis: A detailed exploration of how Gar's performance is affected by various
+        parameters, such as the number of neighbors in the corpus graph and batch size. This contribution is crucial for
+        understanding the adaptability and optimization of Gar in different retrieval environments.
+        
+        Computational Efficiency: Assessing the computational overheads introduced by Gar, which is vital for practical
+        applications, particularly in scenarios where computational resources are a limiting factor.
+
+        Comprehensive Evaluation Metrics: Utilizing a variety of metrics, including nDCG, MAP, and Recall, to evaluate
+        Gar’s performance comprehensively. This thorough evaluation helps in understanding the strengths and limitations
+        of Gar across different aspects of retrieval performance.
+
+        Overall, the main contribution of this paper is the development and validation of a novel adaptive re-ranking
+        method that leverages a corpus graph for enhanced document retrieval, providing insights into its efficiency,
+        effectiveness, and parameter dependencies, which could influence future research and applications in the field
+        of information retrieval.
+
+    How are these papers linked together 
+
+        Common Theme: Graph-Based and Advanced Retrieval Techniques Each paper explores
+        different facets of improving retrieval effectiveness and efficiency by introducing novel structures or frameworks:
+
+        LADR explores the use of latent features and approximation techniques to improve the retrieval process.
+
+        Adaptive Re-ranking with a Corpus Graph (Gar) introduces a graph-based method to dynamically adjust rankings based on a
+        corpus graph, enhancing the relevance of retrieved documents.
+
+        Adhoc Retrieval through Traversal of a Query-Document Graph investigates the use of a graph that includes both queries
+        and documents to potentially improve retrieval outcomes through strategic traversal methods. Methodological Innovations
+
+        All three papers push the boundaries of conventional retrieval methods:
+
+        LADR challenges traditional approximation techniques with a potentially more effective and efficient method.
+
+        Gar employs a corpus graph, which adapatively re-ranks documents based on additional contextual relationships within the
+        corpus.
+
+        Traversal of a Query-Document Graph suggests that direct interaction between queries and documents via graph traversal
+        could yield better retrieval results than isolated query-document evaluations.
+
+        Enhanced Retrieval Metrics Each study focuses on evaluating and improving key retrieval metrics like precision, recall,
+        and nDCG:
+
+        LADR is assessed on its effectiveness and efficiency, likely impacting metrics such as nDCG and precision.
+
+        Gar is evaluated through its impact on retrieval effectiveness, comparing its performance with traditional re-ranking
+        and advanced neural IR systems.
+
+        Traversal of a Query-Document Graph addresses the impact on retrieval metrics through unique graph traversal techniques,
+        offering potential improvements in precision and recall.
+
+        Potential for Future Research Integration The insights and methods from each paper could be integrated into a
+        comprehensive retrieval system:
+
+        Techniques from LADR could be combined with the graph-based approaches of Gar and Traversal of a Query-Document Graph to
+        develop a highly sophisticated IR system that uses both latent features and graph structures. The adaptive re-ranking
+        methods of Gar could benefit from the dynamic traversal methods explored in the Traversal of a Query-Document Graph,
+        potentially enhancing the adaptiveness and contextual awareness of the re-ranking process.
+
+Two new research Questions
+
+Design
+Conduct
+Experiment
+
+Discuss expected results
+
+
+
+
+references = { 
+
+    Hrishikesh Kulkarni, Sean MacAvaney, Nazli Goharian, and Ophir Frieder. 2023. Lexically-Accelerated Dense Retrieval.
+    In Proceedings of the 46th Inter- national ACM SIGIR Conference on Research and Development in Information Retrieval
+    (SIGIR ’23), July 23–27, 2023, Taipei, Taiwan. ACM, New York, NY, USA, 11 pages.
+    https://doi.org/10.1145/3539618.3591715
+
+    Frayling, E., MacAvaney, S., Macdonald, C., Ounis, I. (2024). Effective Adhoc Retrieval Through Traversal of
+    a Query-Document Graph. In: Goharian, N., et al. Advances in Information Retrieval. ECIR 2024. Lecture Notes in Computer
+    Science, vol 14610. Springer, Cham. https://doi.org/10.1007/978-3-031-56063-7_6
+
+    Sean MacAvaney, Nicola Tonellotto, and Craig Macdonald. 2022. Adaptive Re-Ranking with a Corpus Graph. In
+    Proceedings of the 31st ACM Interna- tional Conference on Information and Knowledge Management (CIKM ’22), October
+    17–21, 2022, Atlanta, GA, USA. ACM, New York, NY, USA, 10 pages. https://doi.org/10.1145/3511808.3557231
+
+}

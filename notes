@@ -1,0 +1,29 @@
+Dense Retrieval
+
+Current solution is Approximate nearest neighbour, quicker than brute force search
+but less correct
+
+Max heap property
+
+What is beam search?
+
+Dual encoders? Inner product of the two?
+
+Random negative sampling
+
+Encoding-indexing paradigm
+
+Zhan et al
+
+Pareto Front
+
+What makes retrieval dense ?
+
+what is IVF? Inverted Files index
+based on dirichlet tessellation
+
+Hierachical Navigable Small World graphs HNSW
+
+Dense retrieval cascade between multiple searches approach
+
+searching all vectors scales linearly whereas lexical search prunes to only words included
