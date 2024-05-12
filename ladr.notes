@@ -51,13 +51,41 @@ Preparation
 
 Index documents using a standard lexical retrieval model
 
-For each document, calculate the K more similar neighbours, using TCT-ColBert-HNP for example
+For each document, calculate the K more similar neighbours, using TCT-ColBert-HNP for example expand
+later.....
 
-Algorithm
+Proactive Algorithm
 
 Obtain n documents using the query input into a BM25 model to use as the seed
 
-Expand document pool by unioning the seed document with the K nearest neighbours
+Expand document pool by unioning the seed document with the K nearest neighbours of those documents
+
+Final results of the expansion are stored in R1, this gives both the ranking and the expanded pool
+The complexity and time constraints are bounded by n (seed set size) and k 
+
+Time complexity of O(kn)
+Space complexity of O(Dn)
+
+
+Adaptive Algorithm
+Obtain n documents using the query input into a BM25 model to use as the seed
+Score seeds
+Expand document pool by unioning the seed document with the K nearest neighbours of those documents
+Skip docs we have seen
+Final results of the expansion are stored in R1, this gives both the ranking and the expanded pool
+The complexity and time constraints are bounded by n (seed set size) and k 
+
+Potential for spending less time on less promising documents, but can result in poor complexity if
+the document choice is very poor
+
+Time complexity of O(D)
+Space complexity of O(Dn)
+
+Time complexity of O(kn)
+Space complexity of O(Dn)
+
+
+
 
 
 
