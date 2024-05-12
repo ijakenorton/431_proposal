@@ -1,0 +1,70 @@
+introduction
+dense retrieval is becoming more popular
+recall is improved by the ability to make queries based on semantic meaning instead of a full
+lexigraphical match
+main draw back is computation, at both indexing and query-time.
+other techniques like using an approximation approach in the second re-ranking phase suffer from a
+deminishing of recall, the very point they are trying to solve.
+
+to achieve better results than regular models it would be ideal to do an exhaustive search over all
+documents. this scales linearly with the documents and does not allow and pruning, unlike
+lexigraphical approachs. to get around this problem there have been several efforts made to find the
+approximate top results....  it is a challenge of information expansion
+
+alternative ideas which attempt to provide the same information need include models like spade which
+use query expansion to find semantically similiar documents in the first stage. expanding on the
+query allows for potentially better recall with less computational cost at query-time. though still
+relies on some additional work during the indexing phase
+
+two types of neural models, interactive and non-interactive. the interaction being better the query
+and the vector representation. non-interactive models have static vector embeddings, interactive
+model the index and query.
+
+Using the first rank as a seed is the most common technique being used currently.
+
+ladr
+"ladr uses lexical retrieval to seed a dense retrieval exploration that uses a document proximity
+graph"
+
+ladr estabilishes a new effectiveness-effeciency pareto frontier, while only requiring a cpu, this
+gives it a considerable advantage interms of cost and easy of deployment.
+
+instead of working on a completely new paradigm, ladr aims to build off of more traditional
+lexigraphical techniques, namely, an initial ranking using bm25 to create top k document pool
+efficiently followed by later re-ranking with the semantic aware vector embeddings. doing this alone
+does not solve the recall problem, as the pool of documents is limited by the initial ranking, this
+approach can only improve the ordering of the already gathered pool, and by extension, precision.
+
+using broad strokes, ladr uses the first ranking to seed an exploration of semantically similar
+documents in the additional re-ranking rounds
+
+two strategies, adaptive and proactive
+
+"This is similar to an idea proposed by [26] for the purposes of finding additional documents to
+score when re-ranking; ours differs from this work because we are exploring similar documents as a
+method of pruning the search space of dense retrieval while keeping comparable performance to an
+exhaustive search."
+
+HNSW 
+
+Preparation
+
+Index documents using a standard lexical retrieval model
+
+For each document, calculate the K more similar neighbours, using TCT-ColBert-HNP for example
+
+Algorithm
+
+Obtain n documents using the query input into a BM25 model to use as the seed
+
+Expand document pool by unioning the seed document with the K nearest neighbours
+
+
+
+Main contribution
+
+LADR is a new technique to reduction computational load in dense retrieval. It is competitive with
+other approximate nearest neighbour techniques, its parameters allow for a system which is flexible
+and able to be optimized for specific use cases. State of the art for low latency apporximate dense
+retrieval.
+

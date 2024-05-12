@@ -2,7 +2,7 @@
 %%% Do NOT edit. File created by BibTeX with style
 %%% ACM-Reference-Format-Journals [18-Jan-2012].
 
-\begin{thebibliography}{3}
+\begin{thebibliography}{0}
 
 %%% ====================================================================
 %%% NOTE TO THE USER: you can override these defaults by providing
@@ -36,52 +36,5 @@
 \providecommand\bibinfo[2]{#2}
 \providecommand\natexlab[1]{#1}
 \providecommand\showeprint[2][]{arXiv:#2}
-
-\bibitem[Cazals et~al\mbox{.}(2019)]%
-        {Cazals2019}
-\bibfield{author}{\bibinfo{person}{F. Cazals}, \bibinfo{person}{D. Mazauric},
-  \bibinfo{person}{R. Tetley}, {and} \bibinfo{person}{R. Watrigant}.}
-  \bibinfo{year}{2019}\natexlab{}.
-\newblock \showarticletitle{Comparing Two Clusterings Using Matchings between
-  Clusters of Clusters}.
-\newblock \bibinfo{journal}{\emph{ACM J. Exp. Algorithmics}}
-  \bibinfo{volume}{24} (\bibinfo{date}{Oct.} \bibinfo{year}{2019}),
-  \bibinfo{pages}{1--41}.
-\newblock
-\urldef\tempurl%
-\url{https://doi.org/10.1145/3345951}
-\showDOI{\tempurl}
-
-
-\bibitem[Yuan et~al\mbox{.}(2022a)]%
-        {Yuan2021}
-\bibfield{author}{\bibinfo{person}{Meng Yuan}, \bibinfo{person}{Pauline Lin},
-  {and} \bibinfo{person}{Justin Zobel}.} \bibinfo{year}{2022}\natexlab{a}.
-\newblock \showarticletitle{Document Clustering vs Topic Models: A Case Study}.
-  In \bibinfo{booktitle}{\emph{Proceedings of the 25th Australasian Document
-  Computing Symposium}} \emph{(\bibinfo{series}{ADCS '21})}.
-  \bibinfo{publisher}{Association for Computing Machinery},
-  \bibinfo{address}{New York, NY, USA}, Article \bibinfo{articleno}{6},
-  \bibinfo{numpages}{8}~pages.
-\newblock
-\urldef\tempurl%
-\url{https://doi.org/10.1145/3503516.3503527}
-\showDOI{\tempurl}
-
-
-\bibitem[Yuan et~al\mbox{.}(2022b)]%
-        {Yuan2022}
-\bibfield{author}{\bibinfo{person}{Meng Yuan}, \bibinfo{person}{Justin Zobel},
-  {and} \bibinfo{person}{Pauline Lin}.} \bibinfo{year}{2022}\natexlab{b}.
-\newblock \showarticletitle{Measurement of clustering effectiveness for
-  document collections}.
-\newblock \bibinfo{journal}{\emph{Information Retrieval Journal}}
-  \bibinfo{volume}{25} (\bibinfo{date}{Jan.} \bibinfo{year}{2022}),
-  \bibinfo{pages}{239--268}.
-\newblock
-\urldef\tempurl%
-\url{https://doi.org/10.1007/s10791-021-09401-8}
-\showDOI{\tempurl}
-
 
 \end{thebibliography}
