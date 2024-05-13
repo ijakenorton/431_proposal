@@ -15,5 +15,6 @@ Main contribution
 
 Provide a novel technique which provides a feedback loop to efficiently re-rank documents. This
 technique can improve precision and recall when added to many other re-ranking frameworks. It uses a
-corpus graph structure to guide the exploration process
+corpus graph structure to guide the exploration process. This can allow documents to be ranked that
+would previously have been missed due to budget constraints.
 

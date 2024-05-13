@@ -102,6 +102,6 @@ How does LADR compare with other ANN techniques in dense retrieval w.r.t perform
 computational load?
 What should be considered when choosing better proactive and adaptive LADR?
 Does the nearest neighbour graph need to be constructed using an exhaustive search? Or can it be
-optimized by using an approximation approach like HNSW
+optimized by using an approximation approach like HNSW?
 
 
