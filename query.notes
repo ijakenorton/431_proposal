@@ -1,0 +1,47 @@
+GAR does not take into account the users query itself, relying on the document similarity mapping to
+higher match towards a query. Utilising a query document graph allows for the ranking to focus on
+documents that are specific to the query itself, instead of to the parent document.
+
+This technique uses a bipartite graph of documents to queries, Query-Document Graph(QDG). This is
+made such that there are no document-document connections, similar documents are only connected
+through queries. This allows for the end-users to query to be mapped more directly to the
+precalculated graph. The issue with this approach in general is that it requires there to be queries
+for each document, something which does not exist for any new corpus. In this paper, Doc2Query and
+are used as generative models to create queries from a given document. These are then
+filtered on relevance to only keep the highest quality queries.
+
+Another challenge is how it is possible to calculate the nearest documents to a document in
+question, when it has to be accessed indirectly through a query. We can estimate the similarity by
+of two documents by getting the product of the relevance scores with respect to the common query. In
+addition, as we no longer need the original document, we can find the similarity between the
+hypothesised query q' and the uses original query with the potential documents. So we can
+say....{Sim(d_1, d_2 | q_user = Sim(q_user, q') * Rel(q', d_2)} 
+
+First approach is to use the same algorithm as GAR\ref{GAR}, but substituting the corpus graph with
+the QDG, adding similar documents found with the above method and expanding the frontier in the same
+way. 
+The second approach is to use the candidate queries from a given candidate query as a neighbourhood.
+Then to see which candidate query has the highest relevance, rank a smaller subset of each query
+neighbourhood to decide which query neighbourhood should be prioritized. This way resources are
+spent on documents with the highest likelihood of relevance. This technique is called Reverted
+Adaptive Retrieval(RAR). This approach also adds potential for interpretability, by mapping the
+candidate queries which are picked in the frontier expansion phase.
+
+Resource selection, takes the previous approach further, the subset of the documents which have been
+ranked around a candidate query are averaged. Then these neighbourhoods are added to the new
+frontier as prioritized neighbourhoods. This way neighbourhoods with the highest likelihood of
+relevance are picked to be fully ranked in the next batch of ranking, as well as reducing the chance
+of wasting resources on documents that aren't relevant.
+
+Main contribution
+
+Present a new method to rank relevancy of documents based on the inverse of the clustering
+hypothesis, that "documents relevant to the same query are similar"[query-document]. The QDG can be
+used by multiple re-ranking pipelines and show and increase in the nDCG@10 metric compared to others
+in the same class. All three approaches stated, are competitive against both re-ranking pipeline
+baselines as well as against full dense retrieval baselines. 
+
+Research Questions
+
+Do the new techniques stated allow for more relevant documents to be found?
+Do these techniques improve performance with a lower re-ranking budget? 

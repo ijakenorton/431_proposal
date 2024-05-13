@@ -1,29 +1,3 @@
-introduction 
-
-dense retrieval is becoming more popular 
-
-recall is improved by the ability to make queries based on semantic meaning instead of a full
-lexigraphical match main draw back is computation, at both indexing and query-time. other techniques
-like using an approximation approach in the second re-ranking phase suffer from a deminishing of
-recall, the very point they are trying to solve.
-
-To achieve better results than regular models it would be ideal to do an exhaustive search over all
-documents. this scales linearly with the documents and does not allow and pruning, unlike
-lexigraphical approachs. to get around this problem there have been several efforts made to find the
-approximate top results....  it is a challenge of information expansion
-
-alternative ideas which attempt to provide the same information need include models like spade which
-use query expansion to find semantically similiar documents in the first stage. expanding on the
-query allows for potentially better recall with less computational cost at query-time. though still
-relies on some additional work during the indexing phase
-
-two types of neural models, interactive and non-interactive. the interaction being better the query
-and the vector representation. non-interactive models have static vector embeddings, interactive
-model the index and query.
-
-Using the first rank as a seed is the most common technique being used currently.
-
-
 
 ladr "ladr uses lexical retrieval to seed a dense retrieval exploration that uses a document
 proximity graph"
@@ -82,12 +56,6 @@ Time complexity of O(D) Space complexity of O(Dn)
 Proactive is more predictable in runtime, engineering is easier as it can be easily extracted to a
 separate service if necessary. As adaptive has an iterative approach it could require the separate
 service to be called multiple times.
-
-
-
-
-
-
 
 Main contribution
 

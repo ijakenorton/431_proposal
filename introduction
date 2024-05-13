@@ -1,38 +1,40 @@
 introduction 
 
-dense retrieval is becoming more popular as influenced by the general high adoption rate of
-pre-trained language models such as BERT and T5 which are able to learn semantic representations of
-words.
+Dense retrieval is gaining popularity, driven by the widespread adoption of pre-trained language
+models such as BERT and T5, which excel at learning semantic representations of words. This approach
+involves several trade-offs, particularly noticeable in re-ranking pipelines where choices must be
+made about the size of the initial ranked set and the computational budget allocated for further
+re-ranking. In the models discussed in the referenced papers, a parameter, K, represents the number
+of nearest neighbors considered for both scoring and exploration purposes.
 
-Dense retrieval is all about tradeoffs. In re-ranking pipelines this can be the size of the initial
-ranked set, and often a computational budget alloted to further re-ranking. In the models mentioned
-in the three papers here also have some K, being the number of nearest neighbours for both scoring
-and exploration.
+One of the key advantages of dense retrieval is its ability to improve recall by enabling queries
+based on semantic meaning rather than exact lexical matches. However, this benefit comes at the cost
+of increased computational demand during both indexing and query-time. Additionally, techniques that
+use approximation approaches in the second re-ranking phase often suffer from diminished recall,
+which is counterproductive to their primary objective.
 
-Recall is improved by the ability to make queries based on semantic meaning instead of a full
-lexigraphical match. The main draw back of this is computation, at both indexing and query-time.
-Other techniques like using an approximation approach in the second re-ranking phase suffer from a
-deminishing of recall, the very point they are trying to solve.
+Ideally, to surpass the performance of traditional models, an exhaustive search over all documents
+would be performed. However, such a strategy scales linearly with the number of documents and allows
+no pruning, in contrast to lexical approaches.
 
-To achieve better results than regular models it would be ideal to do an exhaustive search over all
-documents. This scales linearly with the documents and does not allow any pruning, unlike
-lexigraphical approachs.   
+Enhancing recall remains a significant challenge in information retrieval. Alternative methods, such
+as those employed by models like SPADE\ref{spade}, leverage query expansion to identify semantically similar
+documents in the initial stage, potentially improving recall with reduced computational overhead at
+query-time, though still requiring additional effort during indexing.
 
-to get around this problem there have been several efforts made to find the approximate top
-results....
+In dense retrieval, models are broadly classified into two categories based on their interaction
+with queries: interactive and non-interactive. Non-interactive models employ static vector
+embeddings which remain unchanged regardless of the query context. In contrast, interactive models
+dynamically adjust the interaction between the query and document representations in the index,
+enabling more responsive and context-sensitive retrieval.
 
-Improving recall is the challenge of information expansion. Alternative ideas which attempt to
-provide the same information need include models like SPADE\ref{spade} which use query expansion to find
-semantically similiar documents in the first stage. Expanding on the query allows for potentially
-better recall with less computational cost at query-time. Though still relies on some additional
-work during the indexing phase.
+A prevalent technique in this field is the use of the top-ranked results from an initial query as a
+"seed" to guide the re-ranking and exploration processes. This approach leverages the initial
+results to refine and enhance subsequent retrieval efforts.
 
-two types of neural models, interactive and non-interactive. The interaction being between the query
-and the vector representation. Non-interactive models have static vector embeddings, interactive
-models model the index and query.
+Supporting these techniques is the clustering hypothesis, which posits that documents similar in
+content are likely to be relevant to the same queries. This hypothesis is fundamental to many
+advanced exploration techniques in dense retrieval, as it allows for more efficient and effective
+identification of relevant documents through clustering-based strategies.
 
-Using the first rank as a seed is the most common technique being used currently.
-
-As stated by the clustering hypothesis \ref{clustering_hypothesis} similiar documents tend to be
-related to the same queries, this is the basis for many exploration techniques.
 

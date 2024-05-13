@@ -195,237 +195,230 @@
 %Entries
 
 @article{Yuan2022,
-    author = "Meng Yuan and Justin Zobel and Pauline Lin",
-    title = "Measurement of clustering effectiveness for document collections",
-    journal = "Information Retrieval Journal",
-    volume = "25",
-    month = jan,
-    year = "2022",
-    pages = "239--268",
-    doi = "10.1007/s10791-021-09401-8",
-    url = "https://doi.org/10.1007/s10791-021-09401-8",
-    note = "",
+ author = "Meng Yuan and Justin Zobel and Pauline Lin",
+ title = "Measurement of clustering effectiveness for document collections",
+ journal = "Information Retrieval Journal",
+ volume = "25",
+ month = jan,
+ year = "2022",
+ pages = "239--268",
+ doi = "10.1007/s10791-021-09401-8",
+ url = "https://doi.org/10.1007/s10791-021-09401-8",
+ note = "",
 }
 
 @inproceedings{Yuan2021,
-    author = "Meng Yuan and Pauline Lin and Justin Zobel",
-    title = "Document Clustering vs Topic Models: A Case Study",
-    booktitle = "Proceedings of the 25th Australasian Document Computing
-                 Symposium",
-    series = "ADCS '21",
-    articleno = "6",
-    year = "2022",
-    publisher = "Association for Computing Machinery",
-    address = "New York, NY, USA",
-    pages = "1-8",
-    doi = "10.1145/3503516.3503527",
-    url = "https://doi.org/10.1145/3503516.3503527",
+ author = "Meng Yuan and Pauline Lin and Justin Zobel",
+ title = "Document Clustering vs Topic Models: A Case Study",
+ booktitle = "Proceedings of the 25th Australasian Document Computing Symposium",
+ series = "ADCS '21",
+ articleno = "6",
+ year = "2022",
+ publisher = "Association for Computing Machinery",
+ address = "New York, NY, USA",
+ pages = "1-8",
+ doi = "10.1145/3503516.3503527",
+ url = "https://doi.org/10.1145/3503516.3503527",
 }
 
 @article{Cazals2019,
-    author = "F. Cazals and D. Mazauric and R. Tetley and R. Watrigant",
-    title = "Comparing Two Clusterings Using Matchings between Clusters of
-             Clusters ",
-    year = "2019",
-    month = oct,
-    journal = "ACM J. Exp. Algorithmics",
-    volume = "24",
-    pages = "1-41",
-    doi = "10.1145/3345951",
-    url = "https://doi.org/10.1145/3345951",
+ author = "F. Cazals and D. Mazauric and R. Tetley and R. Watrigant",
+ title = "Comparing Two Clusterings Using Matchings between Clusters of Clusters
+          ",
+ year = "2019",
+ month = oct,
+ journal = "ACM J. Exp. Algorithmics",
+ volume = "24",
+ pages = "1-41",
+ doi = "10.1145/3345951",
+ url = "https://doi.org/10.1145/3345951",
 }
 
 @inproceedings{MacAvaney2022,
-    author = {MacAvaney, Sean and Tonellotto, Nicola and Macdonald, Craig},
-    title = {Adaptive Re-Ranking with a Corpus Graph},
-    year = {2022},
-    isbn = {9781450392365},
-    publisher = {Association for Computing Machinery},
-    address = {New York, NY, USA},
-    url = {https://doi.org/10.1145/3511808.3557231},
-    doi = {10.1145/3511808.3557231},
-    abstract = {Search systems often employ a re-ranking pipeline, wherein
-                documents (or passages) from an initial pool of candidates are
-                assigned new ranking scores. The process enables the use of
-                highly-effective but expensive scoring functions that are not
-                suitable for use directly in structures like inverted indices or
-                approximate nearest neighbour indices. However, re-ranking
-                pipelines are inherently limited by the recall of the initial
-                candidate pool; documents that are not identified as candidates
-                for re-ranking by the initial retrieval function cannot be
-                identified. We propose a novel approach for overcoming the recall
-                limitation based on the well-established clustering hypothesis.
-                Throughout the re-ranking process, our approach adds documents to
-                the pool that are most similar to the highest-scoring documents
-                up to that point. This feedback process adapts the pool of
-                candidates to those that may also yield high ranking scores, even
-                if they were not present in the initial pool. It can also
-                increase the score of documents that appear deeper in the pool
-                that would have otherwise been skipped due to a limited
-                re-ranking budget. We find that our Graph-based Adaptive
-                Re-ranking (GAR) approach significantly improves the performance
-                of re-ranking pipelines in terms of precision- and
-                recall-oriented measures, is complementary to a variety of
-                existing techniques (e.g., dense retrieval), is robust to its
-                hyperparameters , and contributes minimally to computational and
-                storage costs. For instance, on the MS MARCO passage ranking
-                dataset, GAR can improve the nDCG of a BM25 candidate pool by up
-                to 8\% when applying a monoT5 ranker.},
-    booktitle = {Proceedings of the 31st ACM International Conference on
-                 Information \& Knowledge Management},
-    pages = {1491--1500},
-    numpages = {10},
-    keywords = {neural re-ranking, clustering hypothesis},
-    location = {Atlanta, GA, USA},
-    series = {CIKM '22},
+ author = {MacAvaney, Sean and Tonellotto, Nicola and Macdonald, Craig},
+ title = {Adaptive Re-Ranking with a Corpus Graph},
+ year = {2022},
+ isbn = {9781450392365},
+ publisher = {Association for Computing Machinery},
+ address = {New York, NY, USA},
+ url = {https://doi.org/10.1145/3511808.3557231},
+ doi = {10.1145/3511808.3557231},
+ abstract = {Search systems often employ a re-ranking pipeline, wherein
+             documents (or passages) from an initial pool of candidates are
+             assigned new ranking scores. The process enables the use of
+             highly-effective but expensive scoring functions that are not
+             suitable for use directly in structures like inverted indices or
+             approximate nearest neighbour indices. However, re-ranking pipelines
+             are inherently limited by the recall of the initial candidate pool;
+             documents that are not identified as candidates for re-ranking by
+             the initial retrieval function cannot be identified. We propose a
+             novel approach for overcoming the recall limitation based on the
+             well-established clustering hypothesis. Throughout the re-ranking
+             process, our approach adds documents to the pool that are most
+             similar to the highest-scoring documents up to that point. This
+             feedback process adapts the pool of candidates to those that may
+             also yield high ranking scores, even if they were not present in the
+             initial pool. It can also increase the score of documents that
+             appear deeper in the pool that would have otherwise been skipped due
+             to a limited re-ranking budget. We find that our Graph-based
+             Adaptive Re-ranking (GAR) approach significantly improves the
+             performance of re-ranking pipelines in terms of precision- and
+             recall-oriented measures, is complementary to a variety of existing
+             techniques (e.g., dense retrieval), is robust to its hyperparameters
+             , and contributes minimally to computational and storage costs. For
+             instance, on the MS MARCO passage ranking dataset, GAR can improve
+             the nDCG of a BM25 candidate pool by up to 8\% when applying a
+             monoT5 ranker.},
+ booktitle = {Proceedings of the 31st ACM International Conference on
+              Information \& Knowledge Management},
+ pages = {1491--1500},
+ numpages = {10},
+ keywords = {neural re-ranking, clustering hypothesis},
+ location = {Atlanta, GA, USA},
+ series = {CIKM '22},
 }
-@inproceedings{Kulkarni2023,
-    author = {Kulkarni, Hrishikesh and MacAvaney, Sean and Goharian, Nazli and
-              Frieder, Ophir},
-    title = {Lexically-Accelerated Dense Retrieval},
-    year = {2023},
-    isbn = {9781450394086},
-    publisher = {Association for Computing Machinery},
-    address = {New York, NY, USA},
-    url = {https://doi.org/10.1145/3539618.3591715},
-    doi = {10.1145/3539618.3591715},
-    abstract = {Retrieval approaches that score documents based on learned dense
-                vectors (i.e., dense retrieval) rather than lexical signals (i.e.
-                , conventional retrieval) are increasingly popular. Their ability
-                to identify related documents that do not necessarily contain the
-                same terms as those appearing in the user's query (thereby
-                improving recall) is one of their key advantages. However, to
-                actually achieve these gains, dense retrieval approaches
-                typically require an exhaustive search over the document
-                collection, making them considerably more expensive at query-time
-                than conventional lexical approaches. Several techniques aim to
-                reduce this computational overhead by approximating the results
-                of a full dense retriever. Although these approaches reasonably
-                approximate the top results, they suffer in terms of recall --
-                one of the key advantages of dense retrieval. We introduce 'LADR'
-                (Lexically-Accelerated Dense Retrieval), a simple-yet-effective
-                approach that improves the efficiency of existing dense retrieval
-                models without compromising on retrieval effectiveness. LADR uses
-                lexical retrieval techniques to seed a dense retrieval
-                exploration that uses a document proximity graph. Through
-                extensive experiments, we find that LADR establishes a new dense
-                retrieval effectiveness-efficiency Pareto frontier among
-                approximate k nearest neighbor techniques. When tuned to take
-                around 8ms per query in retrieval latency on our hardware, LADR
-                consistently achieves both precision and recall that are on par
-                with an exhaustive search on standard benchmarks. Importantly,
-                LADR accomplishes this using only a single CPU -- no hardware
-                accelerators such as GPUs -- which reduces the deployment cost of
-                dense retrieval systems.},
-    booktitle = {Proceedings of the 46th International ACM SIGIR Conference on
-                 Research and Development in Information Retrieval},
-    pages = {152–162},
-    numpages = {11},
-    keywords = {adaptive re-ranking, approximate k nearest neighbor, dense
-                retrieval},
-    location = {, Taipei, Taiwan, },
-    series = {SIGIR '23},
+@inproceedings{ladr,
+ author = {Kulkarni, Hrishikesh and MacAvaney, Sean and Goharian, Nazli and
+           Frieder, Ophir},
+ title = {Lexically-Accelerated Dense Retrieval},
+ year = {2023},
+ isbn = {9781450394086},
+ publisher = {Association for Computing Machinery},
+ address = {New York, NY, USA},
+ url = {https://doi.org/10.1145/3539618.3591715},
+ doi = {10.1145/3539618.3591715},
+ abstract = {Retrieval approaches that score documents based on learned dense
+             vectors (i.e., dense retrieval) rather than lexical signals (i.e. ,
+             conventional retrieval) are increasingly popular. Their ability to
+             identify related documents that do not necessarily contain the same
+             terms as those appearing in the user's query (thereby improving
+             recall) is one of their key advantages. However, to actually achieve
+             these gains, dense retrieval approaches typically require an
+             exhaustive search over the document collection, making them
+             considerably more expensive at query-time than conventional lexical
+             approaches. Several techniques aim to reduce this computational
+             overhead by approximating the results of a full dense retriever.
+             Although these approaches reasonably approximate the top results,
+             they suffer in terms of recall -- one of the key advantages of dense
+             retrieval. We introduce 'LADR' (Lexically-Accelerated Dense
+             Retrieval), a simple-yet-effective approach that improves the
+             efficiency of existing dense retrieval models without compromising
+             on retrieval effectiveness. LADR uses lexical retrieval techniques
+             to seed a dense retrieval exploration that uses a document proximity
+             graph. Through extensive experiments, we find that LADR establishes
+             a new dense retrieval effectiveness-efficiency Pareto frontier among
+             approximate k nearest neighbor techniques. When tuned to take around
+             8ms per query in retrieval latency on our hardware, LADR
+             consistently achieves both precision and recall that are on par with
+             an exhaustive search on standard benchmarks. Importantly, LADR
+             accomplishes this using only a single CPU -- no hardware
+             accelerators such as GPUs -- which reduces the deployment cost of
+             dense retrieval systems.},
+ booktitle = {Proceedings of the 46th International ACM SIGIR Conference on
+              Research and Development in Information Retrieval},
+ pages = {152–162},
+ numpages = {11},
+ keywords = {adaptive re-ranking, approximate k nearest neighbor, dense
+             retrieval},
+ location = {, Taipei, Taiwan, },
+ series = {SIGIR '23},
 }
 
-@inproceedings{Frayling2024,
-    author = {Frayling, Erlend MacAvaney, Sean Macdonald, Craig Ounis, Iadh},
-    editor = {Goharian, Nazli Tonellotto, Nicola He, Yulan Lipani, Aldo McDonald
-              , Graham Macdonald, Craig Ounis, Iadh},
-    title = {Effective Adhoc Retrieval Through Traversal of a Query-Document
-             Graph},
-    booktitle = {Advances in Information Retrieval},
-    abstract = {Adhoc retrieval is the task of effectively retrieving
-                information for an end-user's information need, usually expressed
-                as a textual query. One of the most well-established retrieval
-                frameworks is the two-stage retrieval pipeline, whereby an
-                inexpensive retrieval algorithm retrieves a subset of candidate
-                documents from a corpus, and a more sophisticated (but costly)
-                model re-ranks these candidates. A notable limitation of this
-                two-stage framework is that the second stage re-ranking model can
-                only re-order documents, and any relevant documents not retrieved
-                from the corpus in the first stage are entirely lost to the
-                second stage. A recently-proposed Adaptive Re-Ranking technique
-                has shown that extending the candidate pool by traversing a
-                document similarity graph can overcome this recall problem.
-                However, this traversal technique is agnostic of the user's query
-                , which has the potential to waste compute resources by scoring
-                documents that are not related to the query. In this work, we
-                propose an alternative formulation of the document similarity
-                graph. Rather than using document similarities, we propose a
-                weighted bipartite graph that consists of both document nodes and
-                query nodes. This overcomes the limitations of prior Adaptive
-                Re-Ranking approaches because the bipartite graph can be
-                navigated in a manner that explicitly acknowledges the original
-                user query issued to the search pipeline. We evaluate the
-                effectiveness of our proposed framework by experimenting with the
-                TREC Deep Learning track in a standard adhoc retrieval setting.
-                We find that our approach outperforms state-of-the-art two-stage
-                re-ranking pipelines , improving the nDCG@10 metric by 5.8{\%} on
-                the DL19 test collection.},
-    year = {2024},
-    publisher = {Springer Nature Switzerland},
-    address = {Cham},
-    pages = {89--104},
-    isbn = {978-3-031-56063-7},
+@inproceedings{GAR,
+ author = {Frayling, Erlend MacAvaney, Sean Macdonald, Craig Ounis, Iadh},
+ editor = {Goharian, Nazli Tonellotto, Nicola He, Yulan Lipani, Aldo McDonald ,
+           Graham Macdonald, Craig Ounis, Iadh},
+ title = {Effective Adhoc Retrieval Through Traversal of a Query-Document Graph},
+ booktitle = {Advances in Information Retrieval},
+ abstract = {Adhoc retrieval is the task of effectively retrieving information
+             for an end-user's information need, usually expressed as a textual
+             query. One of the most well-established retrieval frameworks is the
+             two-stage retrieval pipeline, whereby an inexpensive retrieval
+             algorithm retrieves a subset of candidate documents from a corpus,
+             and a more sophisticated (but costly) model re-ranks these
+             candidates. A notable limitation of this two-stage framework is that
+             the second stage re-ranking model can only re-order documents, and
+             any relevant documents not retrieved from the corpus in the first
+             stage are entirely lost to the second stage. A recently-proposed
+             Adaptive Re-Ranking technique has shown that extending the candidate
+             pool by traversing a document similarity graph can overcome this
+             recall problem. However, this traversal technique is agnostic of the
+             user's query , which has the potential to waste compute resources by
+             scoring documents that are not related to the query. In this work,
+             we propose an alternative formulation of the document similarity
+             graph. Rather than using document similarities, we propose a
+             weighted bipartite graph that consists of both document nodes and
+             query nodes. This overcomes the limitations of prior Adaptive
+             Re-Ranking approaches because the bipartite graph can be navigated
+             in a manner that explicitly acknowledges the original user query
+             issued to the search pipeline. We evaluate the effectiveness of our
+             proposed framework by experimenting with the TREC Deep Learning
+             track in a standard adhoc retrieval setting. We find that our
+             approach outperforms state-of-the-art two-stage re-ranking pipelines
+             , improving the nDCG@10 metric by 5.8{\%} on the DL19 test
+             collection.},
+ year = {2024},
+ publisher = {Springer Nature Switzerland},
+ address = {Cham},
+ pages = {89--104},
+ isbn = {978-3-031-56063-7},
 }
 
 @article{clustering_hypothesis,
-    title = {The use of hierarchic clustering in information retrieval},
-    journal = {Information Storage and Retrieval},
-    volume = {7},
-    number = {5},
-    pages = {217-240},
-    year = {1971},
-    issn = {0020-0271},
-    doi = {https://doi.org/10.1016/0020-0271(71)90051-9},
-    url = {https://www.sciencedirect.com/science/article/pii/0020027171900519},
-    author = {N. Jardine and C.J. {van Rijsbergen}},
-    abstract = {We introduce information retrieval strategies which are based on
-                automatic hierarchic clustering of documents. We discuss the
-                evaluation of retrieval strategies and show, using a subset of
-                the Cranfield Aeronautics document collection, that cluster-based
-                retrieval strategies can be devised which are as effective as
-                linear associative retrieval strategies and much more efficient.
-                Finally, we outline how cluster-based retrieval may be extended
-                to large growing document collections and indicate some ways in
-                which the effectiveness of cluster-based retrieval strategies may
-                be improved.},
+ title = {The use of hierarchic clustering in information retrieval},
+ journal = {Information Storage and Retrieval},
+ volume = {7},
+ number = {5},
+ pages = {217-240},
+ year = {1971},
+ issn = {0020-0271},
+ doi = {https://doi.org/10.1016/0020-0271(71)90051-9},
+ url = {https://www.sciencedirect.com/science/article/pii/0020027171900519},
+ author = {N. Jardine and C.J. {van Rijsbergen}},
+ abstract = {We introduce information retrieval strategies which are based on
+             automatic hierarchic clustering of documents. We discuss the
+             evaluation of retrieval strategies and show, using a subset of the
+             Cranfield Aeronautics document collection, that cluster-based
+             retrieval strategies can be devised which are as effective as linear
+             associative retrieval strategies and much more efficient. Finally,
+             we outline how cluster-based retrieval may be extended to large
+             growing document collections and indicate some ways in which the
+             effectiveness of cluster-based retrieval strategies may be improved.
+             },
 }
 
 @inproceedings{spade,
-    author = {Choi, Eunseong and Lee, Sunkyung and Choi, Minjin and Ko, Hyeseon
-              and Song, Young-In and Lee, Jongwuk},
-    title = {SpaDE: Improving Sparse Representations using a Dual Document
-             Encoder for First-stage Retrieval},
-    year = {2022},
-    isbn = {9781450392365},
-    publisher = {Association for Computing Machinery},
-    address = {New York, NY, USA},
-    url = {https://doi.org/10.1145/3511808.3557456},
-    doi = {10.1145/3511808.3557456},
-    abstract = {Sparse document representations have been widely used to
-                retrieve relevant documents via exact lexical matching. Owing to
-                the pre-computed inverted index, it supports fast ad-hoc search
-                but incurs the vocabulary mismatch problem. Although recent
-                neural ranking models using pre-trained language models can
-                address this problem, they usually require expensive query
-                inference costs, implying the trade-off between effectiveness and
-                efficiency. Tackling the trade-off, we propose a novel
-                uni-encoder ranking model, Sparse retriever using a Dual document
-                Encoder (SpaDE), learning document representation via the dual
-                encoder. Each encoder plays a central role in (i) adjusting the
-                importance of terms to improve lexical matching and (ii)
-                expanding additional terms to support semantic matching.
-                Furthermore, our co-training strategy trains the dual encoder
-                effectively and avoids unnecessary intervention in training each
-                other. Experimental results on several benchmarks show that SpaDE
-                outperforms existing uni-encoder ranking models.},
-    booktitle = {Proceedings of the 31st ACM International Conference on
-                 Information \& Knowledge Management},
-    pages = {272–282},
-    numpages = {11},
-    keywords = {neural ranking, pre-trained language model, sparse
-                representations},
-    location = {Atlanta, GA, USA},
-    series = {CIKM '22},
+ author = {Choi, Eunseong and Lee, Sunkyung and Choi, Minjin and Ko, Hyeseon and
+           Song, Young-In and Lee, Jongwuk},
+ title = {SpaDE: Improving Sparse Representations using a Dual Document Encoder
+          for First-stage Retrieval},
+ year = {2022},
+ isbn = {9781450392365},
+ publisher = {Association for Computing Machinery},
+ address = {New York, NY, USA},
+ url = {https://doi.org/10.1145/3511808.3557456},
+ doi = {10.1145/3511808.3557456},
+ abstract = {Sparse document representations have been widely used to retrieve
+             relevant documents via exact lexical matching. Owing to the
+             pre-computed inverted index, it supports fast ad-hoc search but
+             incurs the vocabulary mismatch problem. Although recent neural
+             ranking models using pre-trained language models can address this
+             problem, they usually require expensive query inference costs,
+             implying the trade-off between effectiveness and efficiency.
+             Tackling the trade-off, we propose a novel uni-encoder ranking model
+             , Sparse retriever using a Dual document Encoder (SpaDE), learning
+             document representation via the dual encoder. Each encoder plays a
+             central role in (i) adjusting the importance of terms to improve
+             lexical matching and (ii) expanding additional terms to support
+             semantic matching. Furthermore, our co-training strategy trains the
+             dual encoder effectively and avoids unnecessary intervention in
+             training each other. Experimental results on several benchmarks show
+             that SpaDE outperforms existing uni-encoder ranking models.},
+ booktitle = {Proceedings of the 31st ACM International Conference on
+              Information \& Knowledge Management},
+ pages = {272–282},
+ numpages = {11},
+ keywords = {neural ranking, pre-trained language model, sparse representations},
+ location = {Atlanta, GA, USA},
+ series = {CIKM '22},
 }
