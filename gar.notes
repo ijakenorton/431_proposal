@@ -1,0 +1,19 @@
+The most effective tend to be those that first retrieve a pool of candidate documents 
+
+Cross encoders model both the query and the document to compare the two
+
+Re-ranking needs a budget as it is usually using expensive ranking functions on the later stages.
+GAR focuses its ranking budget on the neighbouring documents which have the highest current score.
+The expansion for GAR is based on a pre-computed corpus graph.
+
+GAR is versitile in that it can be added to many re-ranking pipelines, and improve their
+performance. Just the graph traversal itself is useful even when using simple models. The whole
+system running on lexigraphical signals, BM25 for first retrieval and similarity still performs
+well against other vastly costlier models.
+
+Main contribution
+
+Provide a novel technique which provides a feedback loop to efficiently re-rank documents. This
+technique can improve precision and recall when added to many other re-ranking frameworks. It uses a
+corpus graph structure to guide the exploration process
+

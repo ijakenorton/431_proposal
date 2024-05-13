@@ -1,12 +1,13 @@
-introduction
-dense retrieval is becoming more popular
-recall is improved by the ability to make queries based on semantic meaning instead of a full
-lexigraphical match
-main draw back is computation, at both indexing and query-time.
-other techniques like using an approximation approach in the second re-ranking phase suffer from a
-deminishing of recall, the very point they are trying to solve.
+introduction 
 
-to achieve better results than regular models it would be ideal to do an exhaustive search over all
+dense retrieval is becoming more popular 
+
+recall is improved by the ability to make queries based on semantic meaning instead of a full
+lexigraphical match main draw back is computation, at both indexing and query-time. other techniques
+like using an approximation approach in the second re-ranking phase suffer from a deminishing of
+recall, the very point they are trying to solve.
+
+To achieve better results than regular models it would be ideal to do an exhaustive search over all
 documents. this scales linearly with the documents and does not allow and pruning, unlike
 lexigraphical approachs. to get around this problem there have been several efforts made to find the
 approximate top results....  it is a challenge of information expansion
@@ -22,9 +23,10 @@ model the index and query.
 
 Using the first rank as a seed is the most common technique being used currently.
 
-ladr
-"ladr uses lexical retrieval to seed a dense retrieval exploration that uses a document proximity
-graph"
+
+
+ladr "ladr uses lexical retrieval to seed a dense retrieval exploration that uses a document
+proximity graph"
 
 ladr estabilishes a new effectiveness-effeciency pareto frontier, while only requiring a cpu, this
 gives it a considerable advantage interms of cost and easy of deployment.
@@ -63,26 +65,24 @@ Expand document pool by unioning the seed document with the K nearest neighbours
 Final results of the expansion are stored in R1, this gives both the ranking and the expanded pool
 The complexity and time constraints are bounded by n (seed set size) and k 
 
-Time complexity of O(kn)
-Space complexity of O(Dn)
+Time complexity of O(kn) Space complexity of O(Dn)
 
 
-Adaptive Algorithm
-Obtain n documents using the query input into a BM25 model to use as the seed
-Score seeds
-Expand document pool by unioning the seed document with the K nearest neighbours of those documents
-Skip docs we have seen
-Final results of the expansion are stored in R1, this gives both the ranking and the expanded pool
-The complexity and time constraints are bounded by n (seed set size) and k 
+Adaptive Algorithm Obtain n documents using the query input into a BM25 model to use as the seed
+Score seeds Expand document pool by unioning the seed document with the K nearest neighbours of
+those documents Skip docs we have seen Final results of the expansion are stored in R1, this gives
+both the ranking and the expanded pool The complexity and time constraints are bounded by n (seed
+set size) and k 
 
 Potential for spending less time on less promising documents, but can result in poor complexity if
 the document choice is very poor
 
-Time complexity of O(D)
-Space complexity of O(Dn)
+Time complexity of O(D) Space complexity of O(Dn)
 
-Time complexity of O(kn)
-Space complexity of O(Dn)
+Proactive is more predictable in runtime, engineering is easier as it can be easily extracted to a
+separate service if necessary. As adaptive has an iterative approach it could require the separate
+service to be called multiple times.
+
 
 
 
@@ -95,4 +95,13 @@ LADR is a new technique to reduction computational load in dense retrieval. It i
 other approximate nearest neighbour techniques, its parameters allow for a system which is flexible
 and able to be optimized for specific use cases. State of the art for low latency apporximate dense
 retrieval.
+
+Research Questions
+
+How does LADR compare with other ANN techniques in dense retrieval w.r.t performance and
+computational load?
+What should be considered when choosing better proactive and adaptive LADR?
+Does the nearest neighbour graph need to be constructed using an exhaustive search? Or can it be
+optimized by using an approximation approach like HNSW
+
 
