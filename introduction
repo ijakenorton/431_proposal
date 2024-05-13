@@ -4,6 +4,11 @@ dense retrieval is becoming more popular as influenced by the general high adopt
 pre-trained language models such as BERT and T5 which are able to learn semantic representations of
 words.
 
+Dense retrieval is all about tradeoffs. In re-ranking pipelines this can be the size of the initial
+ranked set, and often a computational budget alloted to further re-ranking. In the models mentioned
+in the three papers here also have some K, being the number of nearest neighbours for both scoring
+and exploration.
+
 Recall is improved by the ability to make queries based on semantic meaning instead of a full
 lexigraphical match. The main draw back of this is computation, at both indexing and query-time.
 Other techniques like using an approximation approach in the second re-ranking phase suffer from a
@@ -17,7 +22,7 @@ to get around this problem there have been several efforts made to find the appr
 results....
 
 Improving recall is the challenge of information expansion. Alternative ideas which attempt to
-provide the same information need include models like SPADE which use query expansion to find
+provide the same information need include models like SPADE\ref{spade} which use query expansion to find
 semantically similiar documents in the first stage. Expanding on the query allows for potentially
 better recall with less computational cost at query-time. Though still relies on some additional
 work during the indexing phase.
@@ -28,6 +33,6 @@ models model the index and query.
 
 Using the first rank as a seed is the most common technique being used currently.
 
-As stated by the clustering hypothesis \ref{clustering_hypothesis} similiar documents tend to be related to the same queries,
-this is the basis for many exploration techniques.
+As stated by the clustering hypothesis \ref{clustering_hypothesis} similiar documents tend to be
+related to the same queries, this is the basis for many exploration techniques.
 

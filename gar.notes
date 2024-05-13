@@ -11,10 +11,49 @@ performance. Just the graph traversal itself is useful even when using simple mo
 system running on lexigraphical signals, BM25 for first retrieval and similarity still performs
 well against other vastly costlier models.
 
+The corpus graph is a directed mapping between documents and the similarity function. Each document
+has a set K number of edges to decrease the size and complexity of the graph. When used, the
+neighbours are selected taking the most similar. 
+
+Algorithm
+let b <- batch size
+let R0 <- Obtain n documents using the query input into an initial model
+let P <- R0
+let R1 <- 0
+let F <- 0 
+
+B <- re-rank top b documents from P using second stage scoring function
+
+Add batch to R1 by taking the union of R1 and top B 
+
+R0 <- discard the batch from the initial ranking
+
+F <- Discard batch from frontier
+
+F <- Update frontier with neighbours of B using the precalculated corpus graph G
+
+P <- Alternate between initial ranking and the frontier
+
+continue while R1 < budget
+
+R1 <- backfill R1 with remaining items if the budget did not allow the algorithm to finish ranking
+
+Alternating the previous ranked set P between the frontier allows for a balanced approach between
+ranking the documents from the initial ranking and their neighbours. This strategy allows for
+documents to be found which can be multiple graph nodes away from the origin document. 
+
 Main contribution
 
 Provide a novel technique which provides a feedback loop to efficiently re-rank documents. This
-technique can improve precision and recall when added to many other re-ranking frameworks. It uses a
+technique can improve precision and recall when added to many other re-ranking pipelines. It uses a
 corpus graph structure to guide the exploration process. This can allow documents to be ranked that
-would previously have been missed due to budget constraints.
+would previously have been missed due to budget constraints. It is still an effective technique when
+used with a low cost similarity scoring model like BM25 as well as a range of other pipelines/
+models.
 
+Research Questions
+
+How does GAR compare with other re-ranking techniques in dense retrieval w.r.t performance and
+computational load?
+What is the computational overhead?
+Does GAR improve other neural information retrieval systems?
