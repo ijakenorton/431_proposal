@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.5.6)  14 MAY 2024 14:02
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.19)  14 MAY 2024 15:00
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -826,19 +826,74 @@ Overfull \hbox (6.2931pt too wide) in paragraph at lines 56--56
 \T1/LinuxLibertineT-TLF/m/n/9 (-20) dense re-trieval, ap-prox-i-mate k near-est neigh-bour, adap-tive re-ranking,
  []
 
+Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 90.
 
-Overfull \hbox (1.62666pt too wide) in paragraph at lines 119--121
-[]\T1/LinuxLibertineT-TLF/b/n/9 (-20) R3:\T1/LinuxLibertineT-TLF/m/n/9 (-20) Does the near-est neigh-bour graph need to be con-structed
- []
+./main.tex:114: LaTeX Error: Command \item invalid in math mode.
 
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.114 		\STATE
+               let \( N \leftarrow\) top-\( c ) \) from \(R \),\(c \) neighb...
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+./main.tex:114: LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.114 		\STATE
+               let \( N \leftarrow\) top-\( c ) \) from \(R \),\(c \) neighb...
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+./main.tex:114: LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.114 		\STATE
+               let \( N \leftarrow\) top-\( c ) \) from \(R \),\(c \) neighb...
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+./main.tex:114: LaTeX Error: Bad math environment delimiter.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.114 		\STATE let \(
+                      N \leftarrow\) top-\( c ) \) from \(R \),\(c \) neighb...
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
+(Font)              scaled to size 7.3pt on input line 115.
+LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
+(Font)              scaled to size 5.5pt on input line 115.
 [1.1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 ]
-Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 154.
+Overfull \hbox (1.62666pt too wide) in paragraph at lines 144--146
+[]\T1/LinuxLibertineT-TLF/b/n/9 (-20) R3:\T1/LinuxLibertineT-TLF/m/n/9 (-20) Does the near-est neigh-bour graph need to be con-structed
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 9.0pt on input line 279.
+(Font)              scaled to size 9.0pt on input line 275.
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 7.0pt on input line 279.
+(Font)              scaled to size 7.0pt on input line 275.
  [2.2]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -860,18 +915,18 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 6E4F887ADCF5AC50B749760A516714FA;3736.
  ) 
 Here is how much of TeX's memory you used:
- 20874 strings out of 478287
- 336574 string characters out of 5849290
- 712207 words of memory out of 5000000
- 38253 multiletter control sequences out of 15000+600000
- 565239 words of font info for 215 fonts, out of 8000000 for 9000
+ 20906 strings out of 478287
+ 337197 string characters out of 5849289
+ 716966 words of memory out of 5000000
+ 38257 multiletter control sequences out of 15000+600000
+ 575840 words of font info for 223 fonts, out of 8000000 for 9000
  1302 hyphenation exceptions out of 8191
  84i,11n,131p,1001b,622s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_oexx6f.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_25tcsq.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_naooyc.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_nh77jq.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_76gpa5.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/newtx/LibertineMathMI.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinBiolinumT.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinBiolinumTB.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinLibertineT.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinLibertineTB.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newtx/NewTXMI.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newtx/txsys.pfb>
-Output written on main.pdf (3 pages, 323468 bytes).
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_25tcsq.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_oexx6f.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_naooyc.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_nh77jq.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_76gpa5.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/newtx/LibertineMathMI.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinBiolinumT.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinBiolinumTB.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinLibertineT.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinLibertineTB.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newtx/NewTXMI.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newtx/txsys.pfb>
+Output written on main.pdf (3 pages, 327231 bytes).
 PDF statistics:
- 202 PDF objects out of 1000 (max. 8388607)
- 175 compressed objects within 2 object streams
- 55 named destinations out of 1000 (max. 500000)
- 53441 words of extra memory for PDF output out of 61914 (max. 10000000)
+ 219 PDF objects out of 1000 (max. 8388607)
+ 192 compressed objects within 2 object streams
+ 70 named destinations out of 1000 (max. 500000)
+ 57537 words of extra memory for PDF output out of 61914 (max. 10000000)
 

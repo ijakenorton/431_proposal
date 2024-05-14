@@ -20,7 +20,7 @@
 
 \email{norja159@student.otago.ac.nz}
 
-%%
+%%http://ch/
 %% The abstract is a short summary of the work to be presented in the
 %% article.
 \begin{abstract}
@@ -86,10 +86,35 @@ proactive and adaptive.
 	\item Store the final results of the expansion in R1, providing both the ranking and the expanded pool.
 \end{enumerate}
 
+\begin{algorithm}
+	\caption{Proactive Algorithm}
+	\begin{algorithmic}[1]
+		\STATE \textbf{Input:} \( q \) query, \( n \) seed set size, \( k \) number of neighbors
+		\STATE \textbf{Output:} \( R1 \) dense retrieval results
+		\STATE let \( R0 \leftarrow \) obtain \( n \) documents using the query input into an initial model
+		\STATE let \( P \leftarrow R0 \)
+		\STATE let \( R1 \leftarrow 0 \)
+		\STATE \( R1 \leftarrow R1 \cup \) top-\( k \) neighbors
+		\STATE \( R \leftarrow \) top ranked docs from \( R1 \) with respect to \( q \)
+	\end{algorithmic}
+\end{algorithm}
+
 The complexity and time constraints are bounded by n (seed set size) and k. The time complexity is
 O(kn), and the space complexity is O(Dn).
 
 \subsection{Adaptive Algorithm}
+
+\begin{algorithm}
+	\caption{Adaptive Algorithm}
+	\begin{algorithmic}[1]
+		\STATE \textbf{Input:} \( q \) query, \( n \) seed set size,\( c \) exploration depth, \( k \) number of neighbors
+		\STATE \textbf{Output:} \( R1 \) dense retrieval results
+		\STATE let \( R0 \leftarrow \) obtain \( n \) documents using the query input into an initial model
+		\STATE let \( R \leftarrow \) second stage scoring of seed documents \(R0)
+		\STATE let \( N \leftarrow\) top-\( c ) \) from \(R \),\(c \) neighbours
+		\STATE \( \text{output} \leftarrow \) top ranked docs from \( R1 \) with respect to \( q \)
+	\end{algorithmic}
+\end{algorithm}
 
 \begin{enumerate}
 
@@ -153,13 +178,13 @@ Algorithm
 \begin{algorithm}
 	\caption{Re-ranking Algorithm}
 	\begin{algorithmic}[1]
-		\STATE \textbf{Input:} Query, budget, corpus graph \(G\)
-		\STATE \textbf{Output:} Ranked list \(R1\)
+		\STATE \textbf{input:} query, budget, corpus graph \(g\)
+		\STATE \textbf{output:} ranked list \(r1\)
+		\STATE let \(r0 \leftarrow\) obtain \(n\) documents using the query input into an initial model
 		\STATE let \(b \leftarrow\) batch size
-		\STATE let \(R0 \leftarrow\) Obtain \(n\) documents using the query input into an initial model
-		\STATE let \(P \leftarrow R0\)
-		\STATE let \(R1 \leftarrow 0\)
-		\STATE let \(F \leftarrow 0\)
+		\STATE let \(P \leftarrow R0 \)
+		\STATE let \(R1 \leftarrow 0 \)
+		\STATE let \(F \leftarrow 0 \)
 
 		\WHILE{\(R1 <\) budget}
 		\STATE \(B \leftarrow\) re-rank top \(b\) documents from \(P\) using second stage scoring function
