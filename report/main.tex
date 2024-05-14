@@ -1,5 +1,6 @@
 \documentclass[sigconf,authorversion,nonacm]{acmart}
-
+\usepackage{algorithm}
+\usepackage{algorithmic}
 %% \BibTeX command to typeset BibTeX logo in the docs
 \AtBeginDocument{%
   \providecommand\BibTeX{{%
@@ -27,7 +28,7 @@
 	and effectiveness of information retrieval systems through use of graph-based and
 	latent feature methodologies. We analyze three distinct approaches: Latent Approximate Document
 	Retrieval (LADR), which utilizes latent features to optimize document retrieval; adaptive
-	re-ranking with a corpus graph (Gar), which dynamically adjusts document rankings within a
+	re-ranking with a corpus graph (GAR), which dynamically adjusts document rankings within a
 	corpus graph to improve relevance; and adhoc retrieval through traversal of a query-document
 	graph, which employs direct traversal methods to optimize query-specific document retrieval. I
 	propose to build ontop of these by trying the query-document mapping but using the LADR
@@ -55,86 +56,70 @@
 \maketitle
 %% Make note of how the papers are related to one another
 \section{Introduction}
-\section{Lexically-Accelerated Dense Retrieval Research }
+\section{Lexically-Accelerated Dense Retrieval Research}
 
+Lexically-Accelerated Dense Retrieval (LADR) uses lexical retrieval to seed a dense retrieval
+exploration, leveraging a document proximity graph. This method establishes a new
+effectiveness-efficiency Pareto frontier, requiring only a CPU, which offers significant advantages
+in terms of cost and ease of deployment.
 
-ladr "ladr uses lexical retrieval to seed a dense retrieval exploration that uses a document
-proximity graph"
+Instead of developing an entirely new paradigm, LADR builds on traditional lexical techniques.
+Specifically, it uses an initial ranking with BM25 to efficiently create a top-K document pool,
+followed by re-ranking with semantically aware vector embeddings. This approach does not solve the
+recall problem entirely, as the pool of documents is limited by the initial ranking, which primarily
+improves the ordering of the already gathered pool, enhancing precision.
 
-ladr estabilishes a new effectiveness-effeciency pareto frontier, while only requiring a cpu, this
-gives it a considerable advantage interms of cost and easy of deployment.
+Broadly speaking, LADR uses the initial ranking to seed an exploration of semantically similar
+documents in subsequent re-ranking rounds. This approach is similar to an idea proposed by [GAR] for
+finding additional documents to score when re-ranking. However, LADR differs by exploring similar
+documents as a method of pruning the dense retrieval search space while maintaining comparable
+performance to an exhaustive search.
 
-instead of working on a completely new paradigm, ladr aims to build off of more traditional
-lexigraphical techniques, namely, an initial ranking using bm25 to create top k document pool
-efficiently followed by later re-ranking with the semantic aware vector embeddings. doing this alone
-does not solve the recall problem, as the pool of documents is limited by the initial ranking, this
-approach can only improve the ordering of the already gathered pool, and by extension, precision.
+Documents are indexed using a standard lexical retrieval model. LADR employs two strategies:
+proactive and adaptive.
 
-using broad strokes, ladr uses the first ranking to seed an exploration of semantically similar
-documents in the additional re-ranking rounds
+\subsection{Proactive Algorithm}
 
-two strategies, adaptive and proactive
+\begin{enumerate}
+	\item Obtain n documents using the query input into a BM25 model as the seed.
+	\item Expand the document pool by unioning the seed documents with the K nearest neighbors of those documents.
+	\item Store the final results of the expansion in R1, providing both the ranking and the expanded pool.
+\end{enumerate}
 
-"This is similar to an idea proposed by [26] for the purposes of finding additional documents to
-score when re-ranking; ours differs from this work because we are exploring similar documents as a
-method of pruning the search space of dense retrieval while keeping comparable performance to an
-exhaustive search."
+The complexity and time constraints are bounded by n (seed set size) and k. The time complexity is
+O(kn), and the space complexity is O(Dn).
 
-HNSW
+\subsection{Adaptive Algorithm}
 
-Preparation
+\begin{enumerate}
 
-Index documents using a standard lexical retrieval model
+	\item Obtain n documents using the query input into a BM25 model as the seed.
 
-For each document, calculate the K more similar neighbours, using TCT-ColBert-HNP for example expand
-later.....
+	\item Score the seeds.
 
-Proactive Algorithm
+	\item Expand the document pool by unioning the seed documents with the K nearest neighbors of
+	      those documents, skipping previously seen documents.
 
-Obtain n documents using the query input into a BM25 model to use as the seed
+	\item Store the final results of the expansion in R1, providing both the ranking and the
+	      expanded pool.
 
-Expand document pool by unioning the seed document with the K nearest neighbours of those documents
+\end{enumerate}
 
-Final results of the expansion are stored in R1, this gives both the ranking and the expanded pool
-The complexity and time constraints are bounded by n (seed set size) and k
+The complexity and time constraints are bounded by n (seed set size) and k. The time complexity is O(D), and the space complexity is O(Dn).
 
-Time complexity of O(kn) Space complexity of O(Dn)
-
-
-Adaptive Algorithm Obtain n documents using the query input into a BM25 model to use as the seed
-Score seeds Expand document pool by unioning the seed document with the K nearest neighbours of
-those documents Skip docs we have seen Final results of the expansion are stored in R1, this gives
-both the ranking and the expanded pool The complexity and time constraints are bounded by n (seed
-set size) and k
-
-Potential for spending less time on less promising documents, but can result in poor complexity if
-the document choice is very poor
-
-Time complexity of O(D) Space complexity of O(Dn)
-
-Proactive is more predictable in runtime, engineering is easier as it can be easily extracted to a
-separate service if necessary. As adaptive has an iterative approach it could require the separate
-service to be called multiple times.
 \subsection{Research Questions}
 
-How does LADR compare with other ANN techniques in dense retrieval w.r.t performance and
-computational load?
+\begin{itemize}
 
-What should be considered when choosing better proactive and adaptive LADR?
+	\item \textbf{R1:}How does LADR compare with other ANN techniques in dense retrieval w.r.t
+	      performance and computational load?
 
-Does the nearest neighbour graph need to be constructed using an exhaustive search? Or can it be
-optimized by using an approximation approach like HNSW?
+	\item \textbf{R2:}What should be considered when choosing better proactive and adaptive LADR?
 
-% \begin{itemize}
-% 	\item \textbf{R1:} How does LADR compare to other approximation techniques in terms of effectiveness
-% 	      and efficiency, and what computational overheads does it entail?
-% 	\item \textbf{R2:} Is LADR applicable across different single-representation dense retrieval
-% 	      models?
-% 	      and how do its parameters, like the number of neighbors k K, influence its performance?
-% 	      Is an exact nearest neighbor graph necessary for LADR's
-% 	      effectiveness, and what are the trade-offs between proactive and adaptive LADR approaches
-% 	      regarding precision, recall, and latency?
-% \end{itemize}
+	\item \textbf{R3:}Does the nearest neighbour graph need to be constructed using an exhaustive
+	      search? Or can it be optimized by using an approximation approach like HNSW?
+
+\end{itemize}
 
 
 \subsection{Main Contributions}
@@ -143,64 +128,51 @@ LADR is a new technique to reduction computational load in dense retrieval. It i
 other approximate nearest neighbour techniques, its parameters allow for a system which is flexible
 and able to be optimized for specific use cases. State of the art for low latency apporximate dense
 retrieval.
-% LADR is a novel retrieval technique that establishes a new pareto
-% frontier for efficiency/effectiveness
 
-% Provides a thorough evaluation of LADR's effectiveness and
-% efficiency, demonstrating its superiority or comparability to other well-known approximation
-% techniques in various scenarios.
-
-% LADR's applicability across a range of single-representation dense
-% retrieval models, showing its versatility and adaptability in different contexts.
-
-% Use of proactive or adaptive LADR in different scenarios and depending on specific system
-% contraints
-
-% The paper might explore the practical requirements and trade-offs
-% involved in implementing LADR, such as the necessity (or not) of an exact nearest neighbor
-% graph, and the balance between proactive and adaptive strategies in terms of precision,
-% recall, and latency.
 \section{Adaptive Re-Ranking with a Corpus Graph}
 
-The most effective tend to be those that first retrieve a pool of candidate documents
+The most effective retrieval strategies tend to be those that first retrieve a pool of candidate
+documents. Cross-encoders model both the query and the document to compare the two, enhancing the
+quality of re-ranking. However, re-ranking requires a budget, as it typically involves using
+expensive ranking functions in the later stages.
 
-Cross encoders model both the query and the document to compare the two
-
-Re-ranking needs a budget as it is usually using expensive ranking functions on the later stages.
-GAR focuses its ranking budget on the neighbouring documents which have the highest current score.
-The expansion for GAR is based on a pre-computed corpus graph.
+GAR focuses its ranking budget on the neighboring documents that have the highest current scores.
+The expansion for GAR is based on a pre-computed corpus graph. The corpus graph is a directed
+mapping between documents and the similarity function. Each document has a set K number of edges to
+decrease the size and complexity of the graph. When used, the neighbours are selected taking the
+most similar. This method is versatile and can be integrated into many re-ranking pipelines to
+improve their performance. Even simple models, i.e using BM25 for both the first, second ranking
+function as well as creation of the graph, benefit from the graph traversal itself.
 
 GAR is versitile in that it can be added to many re-ranking pipelines, and improve their
-performance. Just the graph traversal itself is useful even when using simple models. The whole
+performance. The graph traversal by itself is useful even when using simple models. The whole
 system running on lexigraphical signals, BM25 for first retrieval and similarity still performs
 well against other vastly costlier models.
 
-The corpus graph is a directed mapping between documents and the similarity function. Each document
-has a set K number of edges to decrease the size and complexity of the graph. When used, the
-neighbours are selected taking the most similar.
-
 Algorithm
-let b <- batch size
-let R0 <- Obtain n documents using the query input into an initial model
-let P <- R0
-let R1 <- 0
-let F <- 0
+\begin{algorithm}
+	\caption{Re-ranking Algorithm}
+	\begin{algorithmic}[1]
+		\STATE \textbf{Input:} Query, budget, corpus graph \(G\)
+		\STATE \textbf{Output:} Ranked list \(R1\)
+		\STATE let \(b \leftarrow\) batch size
+		\STATE let \(R0 \leftarrow\) Obtain \(n\) documents using the query input into an initial model
+		\STATE let \(P \leftarrow R0\)
+		\STATE let \(R1 \leftarrow 0\)
+		\STATE let \(F \leftarrow 0\)
 
-B <- re-rank top b documents from P using second stage scoring function
+		\WHILE{\(R1 <\) budget}
+		\STATE \(B \leftarrow\) re-rank top \(b\) documents from \(P\) using second stage scoring function
+		\STATE Add batch to \(R1\) by taking the union of \(R1\) and top \(B\)
+		\STATE \(R0 \leftarrow\) discard the batch from the initial ranking
+		\STATE \(F \leftarrow\) Discard batch from frontier
+		\STATE \(F \leftarrow\) Update frontier with neighbours of \(B\) using the precalculated corpus graph \(G\)
+		\STATE \(P \leftarrow\) Alternate between initial ranking and the frontier
+		\ENDWHILE
 
-Add batch to R1 by taking the union of R1 and top B
-
-R0 <- discard the batch from the initial ranking
-
-F <- Discard batch from frontier
-
-F <- Update frontier with neighbours of B using the precalculated corpus graph G
-
-P <- Alternate between initial ranking and the frontier
-
-continue while R1 < budget
-
-R1 <- backfill R1 with remaining items if the budget did not allow the algorithm to finish ranking
+		\STATE \(R1 \leftarrow\) backfill \(R1\) with remaining items if the budget did not allow the algorithm to finish ranking
+	\end{algorithmic}
+\end{algorithm}
 
 Alternating the previous ranked set P between the frontier allows for a balanced approach between
 ranking the documents from the initial ranking and their neighbours. This strategy allows for
