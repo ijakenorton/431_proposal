@@ -2,7 +2,7 @@
 %%% Do NOT edit. File created by BibTeX with style
 %%% ACM-Reference-Format-Journals [18-Jan-2012].
 
-\begin{thebibliography}{0}
+\begin{thebibliography}{7}
 
 %%% ====================================================================
 %%% NOTE TO THE USER: you can override these defaults by providing
@@ -36,5 +36,123 @@
 \providecommand\bibinfo[2]{#2}
 \providecommand\natexlab[1]{#1}
 \providecommand\showeprint[2][]{arXiv:#2}
+
+\bibitem[Choi et~al\mbox{.}(2022)]%
+        {spade}
+\bibfield{author}{\bibinfo{person}{Eunseong Choi}, \bibinfo{person}{Sunkyung
+  Lee}, \bibinfo{person}{Minjin Choi}, \bibinfo{person}{Hyeseon Ko},
+  \bibinfo{person}{Young-In Song}, {and} \bibinfo{person}{Jongwuk Lee}.}
+  \bibinfo{year}{2022}\natexlab{}.
+\newblock \showarticletitle{SpaDE: Improving Sparse Representations using a
+  Dual Document Encoder for First-stage Retrieval}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the 31st ACM International
+  Conference on Information \& Knowledge Management}} (Atlanta, GA, USA)
+  \emph{(\bibinfo{series}{CIKM '22})}. \bibinfo{publisher}{Association for
+  Computing Machinery}, \bibinfo{address}{New York, NY, USA},
+  \bibinfo{pages}{272–282}.
+\newblock
+\showISBNx{9781450392365}
+\urldef\tempurl%
+\url{https://doi.org/10.1145/3511808.3557456}
+\showDOI{\tempurl}
+
+
+\bibitem[Frayling(2024)]%
+        {query-document}
+\bibfield{author}{\bibinfo{person}{Sean Macdonald Craig Ounis~Iadh Frayling,
+  Erlend~MacAvaney}.} \bibinfo{year}{2024}\natexlab{}.
+\newblock \showarticletitle{Effective Adhoc Retrieval Through Traversal of a
+  Query-Document Graph}. In \bibinfo{booktitle}{\emph{Advances in Information
+  Retrieval}}, \bibfield{editor}{\bibinfo{person}{Nicola He Yulan Lipani Aldo
+  McDonald Graham Macdonald Craig Ounis~Iadh Goharian, Nazli~Tonellotto}}
+  (Ed.). \bibinfo{publisher}{Springer Nature Switzerland},
+  \bibinfo{address}{Cham}, \bibinfo{pages}{89--104}.
+\newblock
+\showISBNx{978-3-031-56063-7}
+
+
+\bibitem[Gospodinov et~al\mbox{.}(2023)]%
+        {doc2query}
+\bibfield{author}{\bibinfo{person}{Mitko Gospodinov}, \bibinfo{person}{Sean
+  MacAvaney}, {and} \bibinfo{person}{Craig Macdonald}.}
+  \bibinfo{year}{2023}\natexlab{}.
+\newblock \showarticletitle{Doc2Query--: When Less is More}. In
+  \bibinfo{booktitle}{\emph{Advances in Information Retrieval}},
+  \bibfield{editor}{\bibinfo{person}{Jaap Kamps}, \bibinfo{person}{Lorraine
+  Goeuriot}, \bibinfo{person}{Fabio Crestani}, \bibinfo{person}{Maria Maistro},
+  \bibinfo{person}{Hideo Joho}, \bibinfo{person}{Brian Davis},
+  \bibinfo{person}{Cathal Gurrin}, \bibinfo{person}{Udo Kruschwitz}, {and}
+  \bibinfo{person}{Annalina Caputo}} (Eds.). \bibinfo{publisher}{Springer
+  Nature Switzerland}, \bibinfo{address}{Cham}, \bibinfo{pages}{414--422}.
+\newblock
+\showISBNx{978-3-031-28238-6}
+
+
+\bibitem[Jardine and {van Rijsbergen}(1971)]%
+        {clustering_hypothesis}
+\bibfield{author}{\bibinfo{person}{N. Jardine} {and} \bibinfo{person}{C.J. {van
+  Rijsbergen}}.} \bibinfo{year}{1971}\natexlab{}.
+\newblock \showarticletitle{The use of hierarchic clustering in information
+  retrieval}.
+\newblock \bibinfo{journal}{\emph{Information Storage and Retrieval}}
+  \bibinfo{volume}{7}, \bibinfo{number}{5} (\bibinfo{year}{1971}),
+  \bibinfo{pages}{217--240}.
+\newblock
+\showISSN{0020-0271}
+\urldef\tempurl%
+\url{https://doi.org/10.1016/0020-0271(71)90051-9}
+\showDOI{\tempurl}
+
+
+\bibitem[Kulkarni et~al\mbox{.}(2023)]%
+        {ladr}
+\bibfield{author}{\bibinfo{person}{Hrishikesh Kulkarni}, \bibinfo{person}{Sean
+  MacAvaney}, \bibinfo{person}{Nazli Goharian}, {and} \bibinfo{person}{Ophir
+  Frieder}.} \bibinfo{year}{2023}\natexlab{}.
+\newblock \showarticletitle{Lexically-Accelerated Dense Retrieval}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the 46th International ACM SIGIR
+  Conference on Research and Development in Information Retrieval}} (, Taipei,
+  Taiwan,) \emph{(\bibinfo{series}{SIGIR '23})}.
+  \bibinfo{publisher}{Association for Computing Machinery},
+  \bibinfo{address}{New York, NY, USA}, \bibinfo{pages}{152–162}.
+\newblock
+\showISBNx{9781450394086}
+\urldef\tempurl%
+\url{https://doi.org/10.1145/3539618.3591715}
+\showDOI{\tempurl}
+
+
+\bibitem[MacAvaney et~al\mbox{.}(2022)]%
+        {gar}
+\bibfield{author}{\bibinfo{person}{Sean MacAvaney}, \bibinfo{person}{Nicola
+  Tonellotto}, {and} \bibinfo{person}{Craig Macdonald}.}
+  \bibinfo{year}{2022}\natexlab{}.
+\newblock \showarticletitle{Adaptive Re-Ranking with a Corpus Graph}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the 31st ACM International
+  Conference on Information \& Knowledge Management}} (Atlanta, GA, USA)
+  \emph{(\bibinfo{series}{CIKM '22})}. \bibinfo{publisher}{Association for
+  Computing Machinery}, \bibinfo{address}{New York, NY, USA},
+  \bibinfo{pages}{1491--1500}.
+\newblock
+\showISBNx{9781450392365}
+\urldef\tempurl%
+\url{https://doi.org/10.1145/3511808.3557231}
+\showDOI{\tempurl}
+
+
+\bibitem[Malkov and Yashunin(2020)]%
+        {hnsw}
+\bibfield{author}{\bibinfo{person}{Yu~A. Malkov} {and} \bibinfo{person}{D.~A.
+  Yashunin}.} \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{Efficient and Robust Approximate Nearest Neighbor
+  Search Using Hierarchical Navigable Small World Graphs}.
+\newblock \bibinfo{journal}{\emph{IEEE Transactions on Pattern Analysis and
+  Machine Intelligence}} \bibinfo{volume}{42}, \bibinfo{number}{4}
+  (\bibinfo{year}{2020}), \bibinfo{pages}{824--836}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1109/TPAMI.2018.2889473}
+\showDOI{\tempurl}
+
 
 \end{thebibliography}

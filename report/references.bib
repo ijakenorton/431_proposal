@@ -194,47 +194,7 @@
 
 %Entries
 
-@article{Yuan2022,
- author = "Meng Yuan and Justin Zobel and Pauline Lin",
- title = "Measurement of clustering effectiveness for document collections",
- journal = "Information Retrieval Journal",
- volume = "25",
- month = jan,
- year = "2022",
- pages = "239--268",
- doi = "10.1007/s10791-021-09401-8",
- url = "https://doi.org/10.1007/s10791-021-09401-8",
- note = "",
-}
-
-@inproceedings{Yuan2021,
- author = "Meng Yuan and Pauline Lin and Justin Zobel",
- title = "Document Clustering vs Topic Models: A Case Study",
- booktitle = "Proceedings of the 25th Australasian Document Computing Symposium",
- series = "ADCS '21",
- articleno = "6",
- year = "2022",
- publisher = "Association for Computing Machinery",
- address = "New York, NY, USA",
- pages = "1-8",
- doi = "10.1145/3503516.3503527",
- url = "https://doi.org/10.1145/3503516.3503527",
-}
-
-@article{Cazals2019,
- author = "F. Cazals and D. Mazauric and R. Tetley and R. Watrigant",
- title = "Comparing Two Clusterings Using Matchings between Clusters of Clusters
-          ",
- year = "2019",
- month = oct,
- journal = "ACM J. Exp. Algorithmics",
- volume = "24",
- pages = "1-41",
- doi = "10.1145/3345951",
- url = "https://doi.org/10.1145/3345951",
-}
-
-@inproceedings{MacAvaney2022,
+@inproceedings{gar,
  author = {MacAvaney, Sean and Tonellotto, Nicola and Macdonald, Craig},
  title = {Adaptive Re-Ranking with a Corpus Graph},
  year = {2022},
@@ -324,7 +284,7 @@
  series = {SIGIR '23},
 }
 
-@inproceedings{GAR,
+@inproceedings{query-document,
  author = {Frayling, Erlend MacAvaney, Sean Macdonald, Craig Ounis, Iadh},
  editor = {Goharian, Nazli Tonellotto, Nicola He, Yulan Lipani, Aldo McDonald ,
            Graham Macdonald, Craig Ounis, Iadh},
@@ -421,4 +381,53 @@
  keywords = {neural ranking, pre-trained language model, sparse representations},
  location = {Atlanta, GA, USA},
  series = {CIKM '22},
+}
+
+@article{hnsw,
+ author = {Malkov, Yu A. and Yashunin, D. A.},
+ journal = {IEEE Transactions on Pattern Analysis and Machine Intelligence},
+ title = {Efficient and Robust Approximate Nearest Neighbor Search Using
+          Hierarchical Navigable Small World Graphs},
+ year = {2020},
+ volume = {42},
+ number = {4},
+ pages = {824-836},
+ keywords = {Routing;Complexity theory;Search problems;Data models;Approximation
+             algorithms;Biological system modeling;Brain modeling;Graph and tree
+             search strategies;artificial intelligence;information search and
+             retrieval;information storage and retrieval;information technology
+             and systems;search process;graphs and networks;data
+             structures;nearest neighbor search;big data;approximate
+             search;similarity search},
+ doi = {10.1109/TPAMI.2018.2889473},
+}
+
+@inproceedings{doc2query,
+ author = {Gospodinov, Mitko and MacAvaney, Sean and Macdonald, Craig},
+ editor = {Kamps, Jaap and Goeuriot, Lorraine and Crestani, Fabio and Maistro,
+           Maria and Joho, Hideo and Davis, Brian and Gurrin, Cathal and
+           Kruschwitz, Udo and Caputo, Annalina},
+ title = {Doc2Query--: When Less is More},
+ booktitle = {Advances in Information Retrieval},
+ year = {2023},
+ publisher = {Springer Nature Switzerland},
+ address = {Cham},
+ pages = {414--422},
+ abstract = {Doc2Query---the process of expanding the content of a document
+             before indexing using a sequence-to-sequence model---has emerged as
+             a prominent technique for improving the first-stage retrieval
+             effectiveness of search engines. However, sequence-to-sequence
+             models are known to be prone to ``hallucinating'' content that is
+             not present in the source text. We argue that Doc2Query is indeed
+             prone to hallucination, which ultimately harms retrieval
+             effectiveness and inflates the index size. In this work, we explore
+             techniques for filtering out these harmful queries prior to
+             indexing. We find that using a relevance model to remove
+             poor-quality queries can improve the retrieval effectiveness of
+             Doc2Query by up to 16{\%}, while simultaneously reducing mean query
+             execution time by 30{\%} and cutting the index size by 48{\%}. We
+             release the code, data, and a live demonstration to facilitate
+             reproduction and further exploration
+             (https://github.com/terrierteam/pyterrier{\_}doc2query).},
+ isbn = {978-3-031-28238-6},
 }
