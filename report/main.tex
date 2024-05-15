@@ -24,9 +24,10 @@
 %% The abstract is a short summary of the work to be presented in the
 %% article.
 \begin{abstract}
+
 	This paper explores advanced retrieval techniques aimed at enhancing the efficiency
 	and effectiveness of information retrieval systems through use of graph-based and
-	latent feature methodologies. We analyze three distinct approaches: Latent Approximate Document
+	latent feature methodologies. I analyze three distinct approaches: Latent Approximate Document
 	Retrieval (LADR)\cite{ladr}, which utilizes latent features to optimize document retrieval; adaptive
 	re-ranking with a corpus graph (GAR)\cite{gar}, which dynamically adjusts document rankings within a
 	corpus graph to improve relevance; and adhoc retrieval through traversal of a query-document
@@ -92,6 +93,7 @@ Supporting these techniques is the clustering hypothesis\cite{clustering_hypothe
 content are likely to be relevant to the same queries. This hypothesis is fundamental to many
 advanced exploration techniques in dense retrieval, as it allows for more efficient and effective
 identification of relevant documents through clustering-based strategies.
+
 \section{Lexically-Accelerated Dense Retrieval}
 
 Lexically-Accelerated Dense Retrieval (LADR)\cite{ladr} uses lexical retrieval to seed a dense retrieval
@@ -112,7 +114,6 @@ exploring similar documents as a method of pruning the dense retrieval search sp
 maintaining comparable performance to an exhaustive search.
 
 Documents are indexed using a standard lexical retrieval model. LADR employs two strategies:
-proactive and adaptive.
 
 \begin{algorithm}
 	\caption{Proactive Algorithm}
@@ -128,13 +129,12 @@ proactive and adaptive.
 \end{algorithm}
 
 \begin{enumerate}
+
 	\item Obtain n documents using the query input into a BM25 model as the seed.
 	\item Expand the document pool by unioning the seed documents with the K nearest neighbours of those documents.
 	\item Store the final results of the expansion in R1, providing both the ranking and the expanded pool.
-\end{enumerate}
-The complexity and time constraints are bounded by n (seed set size) and k. The time complexity is
-O(kn), and the space complexity is O(Dn).
 
+\end{enumerate}
 
 \begin{algorithm}
 	\caption{Adaptive Algorithm}
@@ -145,7 +145,7 @@ O(kn), and the space complexity is O(Dn).
 		\STATE let \( R0 \leftarrow \) obtain \( n \) documents using the query input into an initial model
 		\STATE let \( R \leftarrow \) second stage scoring of seed documents \(R0\)
 		\STATE let \( N \leftarrow\) top ranked \( c  \) from \(R \), \(c \) neighbours
-		\STATE let \( N \leftarrow\) skip documents in R we have already seen
+		\STATE let \( N \leftarrow\) skip documents in R that have been seen
 		\WHILE{\(N \not= 0\) }
 		\STATE let \( R \leftarrow \) Score and add neighbours
 		\STATE let \( N \leftarrow\) top-\( c  \) from \(R \), \(c \) neighbours
@@ -166,9 +166,6 @@ O(kn), and the space complexity is O(Dn).
 	      expanded pool.
 
 \end{enumerate}
-
-The complexity and time constraints are bounded by n (seed set size) and k. The time complexity is
-O(D), and the space complexity is O(Dn).
 
 \subsection{Research Questions}
 
@@ -347,21 +344,35 @@ Use the resource gathering technique as a way to chose potentially more likely n
 Can the use of the resource gathering seen in QDGT\cite{query-document} be used to improve the recall
 of both Proactive and Adaptive LADR?
 
+\section{Research Q2}
+
+What is the optimal neighbourhood sample size for achieving the highest retrieval performance in the
+modified LADR model that incorporates neighbourhood-based ranking?
+
 \subsection{Experiment}
+
+It makes sense to answer both research questions in one experiment as the neighbourhood size will
+also be relative to all the other parameters, and so needs to be tested at the same time.
 
 \subsubsection{Objective}
 
 To test the effectiveness of a modified LADR method where a subset of ranked neighbours from each
-seed document is added to R1, aiming to enhance the efficiency and potentially the recall of the
-retrieval process.
+seed document is added to the document pool for ranking, aiming to enhance the efficiency and
+potentially the recall of the retrieval process.
+
+To determine the most effective neighbourhood sample size that balances retrieval accuracy and
+computational efficiency in the modified LADR model.
 
 \subsubsection{Hypothesis}
 
 Ranking and selecting a subset of neighbours before adding them to the pool of new documents to be
 ranked will lead to more relevant document retrieval and therefore more budget efficient ranking
-thereby improving the recall of the lexically-accelerated dense retrieval process.
+thereby improving the recall of the lexically-accelerated dense retrieval process. I expect that
+smaller budgets will benefit more from smaller neighbourhood sizes.
 
 \subsubsection{Datasets}
+
+As described in LADR\cite{ladr} I will also be using the same datasets to benchmark against.
 
 \begin{itemize}
 	\item TREC DL 2019
@@ -372,21 +383,32 @@ thereby improving the recall of the lexically-accelerated dense retrieval proces
 \subsection{Procedure}
 
 \textbf{Baseline Setup}
+
+Collect data on average sizes of clusters surrounding documents to ascertain reasonable values, for
+use as sample sizes when sampling the seed document neighbourhoods.
+
 \begin{itemize}
-	\item Use the standard LADR system as per the original paper, as implemented in the LADR implementation on GitHub\footnote{\url{https://github.com/Georgetown-IR-Lab/ladr?tab=readme-ov-file}}.
-	\item Perform retrieval tasks to establish baseline metrics for recall, precision, and computational efficiency.
+
+	\item Use the standard LADR system as per the original paper, as implemented
+	      on GitHub\footnote{\url{https://github.com/Georgetown-IR-Lab/ladr?tab=readme-ov-file}}.
+
+	\item Perform the suite of experiments as seen in the LADR paper to establish baseline metrics
+	      for recall, precision, and computational efficiency on our system.
+
 \end{itemize}
 
+\subsection{Experiment Execution}
 \textbf{Modified Setup}
 \begin{itemize}
 	\item Modify the LADR algorithm to incorporate the ranking of neighbours. Specifically, for each seed document identified in the initial retrieval:
 	      \begin{itemize}
-		      \item Retrieve a larger set of neighbouring documents.
+		      \item For each parameter from the LADR implementation, i.e budget, cluster size,
+		            neighbourhood size.
+		      \item Retrieve a larger set of neighbouring documents
 		      \item Rank these documents based on a predefined criterion (e.g., relevance scores, semantic similarity).
 		      \item Select the top-ranked subset of these neighbours and add only this subset to \( R1 \).
 	      \end{itemize}
 \end{itemize}
-\subsection{Experiment Execution}
 
 \begin{itemize}
 	\item Execute retrieval tasks using both the baseline and modified LADR systems.
@@ -401,24 +423,19 @@ unsure how much this would effect the adaptive LADR given that it keeps going un
 however given it still work off a budget, for budgets where it does not reach convergence it would
 still be highly relevant.
 
-\section{Research Q2}
-
-Parameter tuning of neighbourhood sample size, look into how they are getting the closest neighbours
-
-\subsection{Experiment}
-
-\subsection{Hypothesis}
 \section{Conclusion}
 
-The selective ranking and addition process is anticipated to prioritize the most relevant
-neighbourhoods during the retrieval process. This modification is expected to have a more significant
-impact on the Proactive Lexically-Accelerated Dense Retrieval (LADR) system, as it directly
-influences the initial selection of document neighbourhoods. The effect on the Adaptive LADR system
-may be less pronounced since it iteratively refines its selections until convergence. However, for
-instances where the Adaptive LADR operates under a constrained budget and may not reach full
-convergence, this selective process should still prove beneficial in ensuring that the most relevant
-documents are considered within the given constraints. Thus, the enhancement is expected to improve
-the efficiency and efficacy of both retrieval modes, particularly under resource limitations.
+In conclusion, this paper critically examines several advanced retrieval strategies that leverage
+both graph-based and latent feature methodologies to enhance the efficiency and effectiveness of
+information retrieval systems. By assessing three distinct methods—Latent Approximate Document
+Retrieval (LADR), adaptive re-ranking with a corpus graph (GAR), and adhoc retrieval through a
+query-document graph (QDGT)—this study underscores the potential of integrating these techniques to
+optimize retrieval processes further. These methods collectively demonstrate how dynamic adjustment
+of document relationships and direct traversal of query-document mappings can significantly refine
+the relevance and precision of search results in large datasets. Future research could explore the
+synergistic integration of these approaches, possibly leading to more sophisticated systems capable
+of handling the increasing complexity of information retrieval tasks with higher computational
+efficiency and improved accuracy.
 
 \section*{}
 %% The next two lines define the bibliography style to be used, and
