@@ -117,19 +117,19 @@ proactive and adaptive.
 \begin{algorithm}
 	\caption{Proactive Algorithm}
 	\begin{algorithmic}[1]
-		\STATE \textbf{Input:} \( q \) query, \( n \) seed set size, \( k \) number of neighbors
+		\STATE \textbf{Input:} \( q \) query, \( n \) seed set size, \( k \) number of neighbours
 		\STATE \textbf{Output:} \( R1 \) dense retrieval results
 		\STATE let \( R0 \leftarrow \) obtain \( n \) documents using the query input into an initial model
 		\STATE let \( P \leftarrow R0 \)
 		\STATE let \( R1 \leftarrow 0 \)
-		\STATE \( R1 \leftarrow R1 \cup \) top-\( k \) neighbors
+		\STATE \( R1 \leftarrow R1 \cup \) top-\( k \) neighbours
 		\STATE \( R \leftarrow \) top ranked docs from \( R1 \) with respect to \( q \)
 	\end{algorithmic}
 \end{algorithm}
 
 \begin{enumerate}
 	\item Obtain n documents using the query input into a BM25 model as the seed.
-	\item Expand the document pool by unioning the seed documents with the K nearest neighbors of those documents.
+	\item Expand the document pool by unioning the seed documents with the K nearest neighbours of those documents.
 	\item Store the final results of the expansion in R1, providing both the ranking and the expanded pool.
 \end{enumerate}
 The complexity and time constraints are bounded by n (seed set size) and k. The time complexity is
@@ -139,7 +139,8 @@ O(kn), and the space complexity is O(Dn).
 \begin{algorithm}
 	\caption{Adaptive Algorithm}
 	\begin{algorithmic}[1]
-		\STATE \textbf{Input:} \( q \) query, \( n \) seed set size,\( c \) exploration depth, \( k \) number of neighbors
+		\STATE \textbf{Input:} \( q \) query, \( n \) seed set size,\( c \) exploration depth, \( k
+		\) number of neighbours
 		\STATE \textbf{Output:} \( R1 \) dense retrieval results
 		\STATE let \( R0 \leftarrow \) obtain \( n \) documents using the query input into an initial model
 		\STATE let \( R \leftarrow \) second stage scoring of seed documents \(R0\)
@@ -158,7 +159,7 @@ O(kn), and the space complexity is O(Dn).
 
 	\item Score the seeds.
 
-	\item Expand the document pool by unioning the seed documents with the K nearest neighbors of
+	\item Expand the document pool by unioning the seed documents with the K nearest neighbours of
 	      those documents, skipping previously seen documents.
 
 	\item Store the final results of the expansion in R1, providing both the ranking and the
@@ -199,11 +200,11 @@ documents. Cross-encoders model both the query and the document to compare the t
 quality of re-ranking. However, re-ranking requires a budget, as it typically involves using
 expensive ranking functions in the later stages.
 
-GAR strategically allocates its ranking budget by focusing on neighboring documents with the highest
+GAR strategically allocates its ranking budget by focusing on neighbouring documents with the highest
 current scores. This process is underpinned by a pre-computed corpus graph, which serves as a
 directed map linking documents through a similarity function. To manage the graph's size and
 complexity, each document is connected by a set number of edges, denoted as \(K\). In practice, the
-selection process prioritizes the most similar neighbors based on this graph structure.
+selection process prioritizes the most similar neighbours based on this graph structure.
 
 GAR is versatile, easily integrating into and enhancing a variety of re-ranking pipelines. Its graph
 traversal technique is effective even with simple models, leveraging only lexical signals (BM25) for
@@ -342,29 +343,82 @@ different strategies for managing the trade-offs between breadth and depth in se
 
 \section{Research Q1}
 
-New training direction for dense models using intra-document similarity?
-
-Try Gar process with LADR idea?
-
-Try different strategy for alternating
-
 Use the resource gathering technique as a way to chose potentially more likely neighbourhoods
+Can the use of the resource gathering seen in QDGT\cite{query-document} be used to improve the recall
+of both Proactive and Adaptive LADR?
+
 \subsection{Experiment}
 
-\subsection{Hypothesis}
+\subsubsection{Objective}
+
+To test the effectiveness of a modified LADR method where a subset of ranked neighbours from each
+seed document is added to R1, aiming to enhance the efficiency and potentially the recall of the
+retrieval process.
+
+\subsubsection{Hypothesis}
+
+Ranking and selecting a subset of neighbours before adding them to the pool of new documents to be
+ranked will lead to more relevant document retrieval and therefore more budget efficient ranking
+thereby improving the recall of the lexically-accelerated dense retrieval process.
+
+\subsubsection{Datasets}
+
+\begin{itemize}
+	\item TREC DL 2019
+	\item TREC DL 2020
+	\item MS MARCO small
+\end{itemize}
+
+\subsection{Procedure}
+
+\textbf{Baseline Setup}
+\begin{itemize}
+	\item Use the standard LADR system as per the original paper, as implemented in the LADR implementation on GitHub\footnote{\url{https://github.com/Georgetown-IR-Lab/ladr?tab=readme-ov-file}}.
+	\item Perform retrieval tasks to establish baseline metrics for recall, precision, and computational efficiency.
+\end{itemize}
+
+\textbf{Modified Setup}
+\begin{itemize}
+	\item Modify the LADR algorithm to incorporate the ranking of neighbours. Specifically, for each seed document identified in the initial retrieval:
+	      \begin{itemize}
+		      \item Retrieve a larger set of neighbouring documents.
+		      \item Rank these documents based on a predefined criterion (e.g., relevance scores, semantic similarity).
+		      \item Select the top-ranked subset of these neighbours and add only this subset to \( R1 \).
+	      \end{itemize}
+\end{itemize}
+\subsection{Experiment Execution}
+
+\begin{itemize}
+	\item Execute retrieval tasks using both the baseline and modified LADR systems.
+	\item Record and compare the performance metrics (recall, precision, computational time).
+\end{itemize}
+
+\subsection{Expected Results}
+
+It is expected that this selective ranking and addition process will prioritize the neighbourhoods
+which are the most relevant. I would expect it to have more impact on the Proactive LADR, as I am
+unsure how much this would effect the adaptive LADR given that it keeps going until convergence,
+however given it still work off a budget, for budgets where it does not reach convergence it would
+still be highly relevant.
 
 \section{Research Q2}
+
+Parameter tuning of neighbourhood sample size, look into how they are getting the closest neighbours
 
 \subsection{Experiment}
 
 \subsection{Hypothesis}
 \section{Conclusion}
 
-These papers contribute to the evolving landscape of information retrieval by demonstrating how
-advanced data structures like graphs and innovative algorithms can be leveraged to solve complex
-retrieval challenges. By exploring different aspects of IR enhancements, whether through latent
-features, adaptive re-ranking, or traversal mechanisms, they collectively push the field toward more
-nuanced and effective retrieval solutions.
+The selective ranking and addition process is anticipated to prioritize the most relevant
+neighbourhoods during the retrieval process. This modification is expected to have a more significant
+impact on the Proactive Lexically-Accelerated Dense Retrieval (LADR) system, as it directly
+influences the initial selection of document neighbourhoods. The effect on the Adaptive LADR system
+may be less pronounced since it iteratively refines its selections until convergence. However, for
+instances where the Adaptive LADR operates under a constrained budget and may not reach full
+convergence, this selective process should still prove beneficial in ensuring that the most relevant
+documents are considered within the given constraints. Thus, the enhancement is expected to improve
+the efficiency and efficacy of both retrieval modes, particularly under resource limitations.
 
 \section*{}
 %% The next two lines define the bibliography style to be used, and
