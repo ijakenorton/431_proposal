@@ -25,16 +25,15 @@
 %% article.
 \begin{abstract}
 
-	This paper explores advanced retrieval techniques aimed at enhancing the efficiency
-	and effectiveness of information retrieval systems through use of graph-based and
-	latent feature methodologies. I analyze three distinct approaches: Latent Approximate Document
-	Retrieval (LADR)\cite{ladr}, which utilizes latent features to optimize document retrieval; adaptive
-	re-ranking with a corpus graph (GAR)\cite{gar}, which dynamically adjusts document rankings within a
-	corpus graph to improve relevance; and adhoc retrieval through traversal of a query-document
-	graph(QDGT)\cite{query-document}, which employs direct traversal methods to optimize query-specific document retrieval. I
-	propose to build ontop of these by trying the query-document mapping but using the LADR
-	methodologies. Try other LADR with smarter exploration ideas.
-
+	This paper explores advanced retrieval techniques aimed at enhancing the efficiency and
+	effectiveness of information retrieval systems through use of graph-based and latent feature
+	methodologies. I analyze three distinct approaches: Lexically-Accelerated Dense Retrieval
+	(LADR)\cite{ladr}, which utilizes latent features to optimize document retrieval; Adaptive
+	Re-Ranking with a Corpus Graph (GAR)\cite{gar}, which dynamically adjusts document rankings
+	within a corpus graph to improve relevance; and Adhoc Retrieval Through Traversal of a
+	Query-Document Graph(QDGT)\cite{query-document}, which employs direct traversal methods to
+	optimize query-specific document retrieval. I propose to build ontop of these by using the idea
+	of document neighbourhoods from(QDGT)\cite{query-document} but using the LADR methodologies.
 
 \end{abstract}
 
@@ -79,12 +78,6 @@ as those employed by models like SPADE\cite{spade}, leverage query expansion to 
 documents in the initial stage, potentially improving recall with reduced computational overhead at
 query-time, though still requiring additional effort during indexing.
 
-In dense retrieval, models are broadly classified into two categories, interactive and
-non-interactive. Non-interactive models employ static vector embeddings which remain unchanged
-regardless of the query context. In contrast, interactive models dynamically adjust the interaction
-between the query and document representations in the index, enabling more responsive and
-context-sensitive retrieval.
-
 A prevalent technique in this field is the use of the top-ranked results from an initial query as a
 "seed" to guide the re-ranking and exploration processes. This approach leverages the initial
 results to refine and enhance subsequent retrieval efforts.
@@ -96,7 +89,7 @@ identification of relevant documents through clustering-based strategies.
 
 \section{Lexically-Accelerated Dense Retrieval}
 
-Lexically-Accelerated Dense Retrieval (LADR)\cite{ladr} uses lexical retrieval to seed a dense retrieval
+Lexically-Accelerated Dense Retrieval (LADR)\cite{ladr} uses lexical retrieval to seed dense retrieval
 exploration, leveraging a document proximity graph. This method establishes a new
 effectiveness-efficiency Pareto frontier, requiring only a CPU, which offers significant advantages
 in terms of cost and ease of deployment.
@@ -139,7 +132,7 @@ Documents are indexed using a standard lexical retrieval model. LADR employs two
 \begin{algorithm}
 	\caption{Adaptive Algorithm}
 	\begin{algorithmic}[1]
-		\STATE \textbf{Input:} \( q \) query, \( n \) seed set size,\( c \) exploration depth, \( k
+		\STATE \textbf{Input:} \( q \) query, \( n \) seed set size, \( c \) exploration depth, \( k
 		\) number of neighbours
 		\STATE \textbf{Output:} \( R1 \) dense retrieval results
 		\STATE let \( R0 \leftarrow \) obtain \( n \) documents using the query input into an initial model
@@ -211,15 +204,15 @@ compared to other more expensive models.
 \begin{algorithm}
 	\caption{Re-ranking Algorithm}
 	\begin{algorithmic}[1]
-		\STATE \textbf{input:} query, budget, corpus graph \(g\)
-		\STATE \textbf{output:} ranked list \(r1\)
-		\STATE let \(r0 \leftarrow\) obtain \(n\) documents using the query input into an initial model
+		\STATE \textbf{input:} query \(q\), \(budget\), corpus graph \(g\)
+		\STATE \textbf{output:} ranked list \(R1\)
+		\STATE let \(R0 \leftarrow\) obtain \(n\) documents using the query input into an initial model
 		\STATE let \(b \leftarrow\) batch size
 		\STATE let \(P \leftarrow R2 \)
 		\STATE let \(R1 \leftarrow 0 \)
 		\STATE let \(F \leftarrow 0 \)
 
-		\WHILE{\(R1 <\) budget}
+		\WHILE{\(R1 <\) \(budget\)}
 		\STATE \(B \leftarrow\) re-rank top \(b\) documents from \(P\) using second stage scoring function
 		\STATE Add batch to \(R1\) by taking the union of \(R1\) and top \(B\)
 		\STATE \(R0 \leftarrow\) discard the batch from the initial ranking
@@ -270,14 +263,14 @@ Graph(QDG)\cite{query-document}. This is made such that there are no document-do
 similar documents are only connected through queries. This allows for the end-users query to be
 mapped more directly to the precalculated graph. The issue with this approach in general is that it
 requires there to be queries for each document, something which does not exist for any new corpus.
-In this paper, Doc2Query\cite{doc2query} and are used as generative models to create queries from a given document.
+In this paper, Doc2Query\cite{doc2query} is used as generative a model to create queries from a given document.
 These are then filtered on relevance to only keep the highest quality queries.
 
 Another challenge is how it is possible to calculate the nearest documents to a document in
 question, when it has to be accessed indirectly through a query. We can estimate the similarity
 of two documents by getting the product of the relevance scores with respect to the common query. In
 addition, as we no longer need the original document, we can find the similarity between the
-hypothesised query q\('\) and the uses original query with the potential documents.
+hypothesised query q\('\) and the users original query with the potential documents.
 So :
 \[
 	\text{Similarity}(d_1, d_2 \mid q_{\text{user}}) = \text{Similarity}(q_{\text{user}}, q') \times
@@ -311,7 +304,7 @@ of wasting resources on documents that aren't relevant.
 
 \subsection{Main Contributions}
 
-Present a new method to rank relevancy of documents based on the inverse of the clustering
+This paper presents a new method to rank relevancy of documents based on the inverse of the clustering
 hypothesis, that "documents relevant to the same query are similar"\cite{query-document}. The QDG can be
 used by multiple re-ranking pipelines and show an increase in the nDCG@10 metric compared to others
 in the same class. All three approaches stated, are competitive against both re-ranking pipeline
@@ -340,9 +333,8 @@ different strategies for managing the trade-offs between breadth and depth in se
 
 \section{Research Q1}
 
-Use the resource gathering technique as a way to chose potentially more likely neighbourhoods
-Can the use of the resource gathering seen in QDGT\cite{query-document} be used to improve the recall
-of both Proactive and Adaptive LADR?
+Can the use of the resource gathering seen in QDGT\cite{query-document} be used to improve the
+recall of both Proactive and Adaptive LADR?
 
 \section{Research Q2}
 
@@ -358,7 +350,7 @@ also be relative to all the other parameters, and so needs to be tested at the s
 
 To test the effectiveness of a modified LADR method where a subset of ranked neighbours from each
 seed document is added to the document pool for ranking, aiming to enhance the efficiency and
-potentially the recall of the retrieval process.
+the recall of the retrieval process.
 
 To determine the most effective neighbourhood sample size that balances retrieval accuracy and
 computational efficiency in the modified LADR model.
@@ -366,9 +358,9 @@ computational efficiency in the modified LADR model.
 \subsubsection{Hypothesis}
 
 Ranking and selecting a subset of neighbours before adding them to the pool of new documents to be
-ranked will lead to more relevant document retrieval and therefore more budget efficient ranking
-thereby improving the recall of the lexically-accelerated dense retrieval process. I expect that
-smaller budgets will benefit more from smaller neighbourhood sizes.
+ranked will lead to more relevant document retrieval and therefore more budget efficient ranking.
+Improving the recall of the lexically-accelerated dense retrieval process. I expect that smaller
+budgets will benefit more from smaller neighbourhood sizes.
 
 \subsubsection{Datasets}
 
@@ -404,7 +396,7 @@ use as sample sizes when sampling the seed document neighbourhoods.
 	      \begin{itemize}
 		      \item For each parameter from the LADR implementation, i.e budget, cluster size,
 		            neighbourhood size.
-		      \item Retrieve a larger set of neighbouring documents
+		      \item Retrieve a set of neighbouring documents
 		      \item Rank these documents based on a predefined criterion (e.g., relevance scores, semantic similarity).
 		      \item Select the top-ranked subset of these neighbours and add only this subset to \( R1 \).
 	      \end{itemize}
@@ -420,14 +412,14 @@ use as sample sizes when sampling the seed document neighbourhoods.
 It is expected that this selective ranking and addition process will prioritize the neighbourhoods
 which are the most relevant. I would expect it to have more impact on the Proactive LADR, as I am
 unsure how much this would effect the adaptive LADR given that it keeps going until convergence,
-however given it still work off a budget, for budgets where it does not reach convergence it would
+however given that a budget is involved, for budgets where it does not reach convergence it would
 still be highly relevant.
 
 \section{Conclusion}
 
 In conclusion, this paper critically examines several advanced retrieval strategies that leverage
 both graph-based and latent feature methodologies to enhance the efficiency and effectiveness of
-information retrieval systems. By assessing three distinct methods—Latent Approximate Document
+information retrieval systems. By assessing three distinct methods—Lexically-Accelerated Dense
 Retrieval (LADR), adaptive re-ranking with a corpus graph (GAR), and adhoc retrieval through a
 query-document graph (QDGT)—this study underscores the potential of integrating these techniques to
 optimize retrieval processes further. These methods collectively demonstrate how dynamic adjustment
